@@ -1,5 +1,7 @@
 ﻿const callsContainer = document.getElementById("calls-container");
 const loadingState = document.getElementById("loading-state");
+const heroLastUpdated = document.getElementById("hero-last-updated");
+const heroCallCount = document.getElementById("hero-call-count");
 const DATA_URL = "data/calls.json";
 
 const STATUS_ORDER = {
@@ -20,18 +22,43 @@ async function loadCalls() {
     const data = await response.json();
     const calls = Array.isArray(data) ? data.slice().sort(compareCalls) : [];
 
+    updateHero(calls);
     renderCalls(calls);
-    loadingState.textContent = `${calls.length} call${calls.length === 1 ? "" : "s"} loaded.`;
+    loadingState.textContent = `${calls.length} call${calls.length === 1 ? "" : "s"} currently listed.`;
   } catch (error) {
     console.error("Failed to load funding calls:", error);
+    if (heroLastUpdated) {
+      heroLastUpdated.textContent = "Unavailable";
+    }
+    if (heroCallCount) {
+      heroCallCount.textContent = "0 calls";
+    }
     loadingState.textContent = "Unable to load calls at the moment.";
     callsContainer.innerHTML = `
       <article class="empty-state">
-        <h2>Data unavailable</h2>
+        <h3>Data unavailable</h3>
         <p>The calls list could not be loaded from the JSON source.</p>
       </article>
     `;
   }
+}
+
+function updateHero(calls) {
+  if (heroCallCount) {
+    heroCallCount.textContent = `${calls.length} call${calls.length === 1 ? "" : "s"}`;
+  }
+
+  if (!heroLastUpdated) {
+    return;
+  }
+
+  const latestUpdate = calls
+    .map((call) => call && call.last_updated)
+    .filter((value) => typeof value === "string" && value.trim())
+    .sort()
+    .at(-1);
+
+  heroLastUpdated.textContent = latestUpdate ? formatDisplayDate(latestUpdate) : "Unknown";
 }
 
 function compareCalls(a, b) {
@@ -60,7 +87,7 @@ function renderCalls(calls) {
   if (!calls.length) {
     callsContainer.innerHTML = `
       <article class="empty-state">
-        <h2>No calls listed</h2>
+        <h3>No calls listed</h3>
         <p>Update <code>data/calls.json</code> to publish funding opportunities.</p>
       </article>
     `;
@@ -87,45 +114,56 @@ function createCardMarkup(call) {
   return `
     <article class="call-card">
       <div class="card-top">
-        <span class="pill">${escapeHtml(scope)}</span>
-        <span class="pill pill-status-${escapeHtmlClass(call.status)}">${escapeHtml(status)}</span>
-        <span class="pill pill-priority-${escapeHtmlClass(call.priority)}">${escapeHtml(priority)}</span>
+        <div class="card-heading">
+          <h3>${escapeHtml(title)}</h3>
+          <div class="program-line">${escapeHtml(program)}</div>
+        </div>
+        <div class="card-side">
+          <span class="badge badge-neutral">${escapeHtml(scope)}</span>
+          <span class="badge badge-status-${escapeHtmlClass(call.status)}">${escapeHtml(status)}</span>
+        </div>
       </div>
 
-      <div>
-        <h2>${escapeHtml(title)}</h2>
+      <div class="card-badges">
+        <span class="badge badge-priority-${escapeHtmlClass(call.priority)}">Priority: ${escapeHtml(priority)}</span>
+        <span class="badge badge-neutral">Relevance: ${escapeHtml(relevance)}</span>
       </div>
 
-      <dl class="meta-list">
-        <div class="meta-row">
-          <dt class="meta-label">Program</dt>
-          <dd>${escapeHtml(program)}</dd>
+      <div class="card-facts">
+        <div class="fact">
+          <span class="fact-label">Deadline</span>
+          <span class="fact-value">${escapeHtml(deadline)}</span>
         </div>
-        <div class="meta-row">
-          <dt class="meta-label">Deadline</dt>
-          <dd>${escapeHtml(deadline)}</dd>
+        <div class="fact">
+          <span class="fact-label">Status</span>
+          <span class="fact-value">${escapeHtml(status)}</span>
         </div>
-        <div class="meta-row">
-          <dt class="meta-label">Relevance</dt>
-          <dd>${escapeHtml(relevance)}</dd>
+        <div class="fact">
+          <span class="fact-label">Scope</span>
+          <span class="fact-value">${escapeHtml(scope)}</span>
         </div>
-      </dl>
+      </div>
 
-      <p class="summary">${escapeHtml(summary)}</p>
-      <p class="insight"><strong>Reality check:</strong> ${escapeHtml(realityCheck)}</p>
+      <div class="card-copy">
+        <p class="summary">${escapeHtml(summary)}</p>
+        <p class="insight"><strong>Reality check:</strong> ${escapeHtml(realityCheck)}</p>
+      </div>
 
-      <div class="tag-list" aria-label="Domains">
+      <div class="card-tags" aria-label="Domains">
         ${domains.length ? domains.map((domain) => `<span class="tag">${escapeHtml(domain)}</span>`).join("") : '<span class="tag">General research</span>'}
       </div>
 
-      <a
-        class="source-link"
-        href="${escapeAttribute(sourceUrl)}"
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        ${escapeHtml(sourceLabel)}
-      </a>
+      <div class="card-footer">
+        <span class="source-note">Source: ${escapeHtml(sourceLabel)}</span>
+        <a
+          class="source-link"
+          href="${escapeAttribute(sourceUrl)}"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Open source
+        </a>
+      </div>
     </article>
   `;
 }
@@ -139,7 +177,20 @@ function formatDeadline(deadline) {
     return "N/A";
   }
 
-  return Number.isNaN(Date.parse(deadline)) ? "N/A" : deadline;
+  return Number.isNaN(Date.parse(deadline)) ? "N/A" : formatDisplayDate(deadline);
+}
+
+function formatDisplayDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  }).format(date);
 }
 
 function formatLabel(value, fallback) {
