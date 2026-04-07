@@ -12,4 +12,14 @@ For each call, keep the existing schema and update the content directly in the J
 - `last_updated` as the date of the latest content check
 - call details such as title, status, deadline, summary, and source link
 
+Run the validator after editing `data/calls.json`:
+
+```bash
+python tools/validate_calls.py
+```
+
+The same validator also runs automatically in GitHub Actions on push and pull request.
+
+See `docs/calls_data_workflow.md` for the editorial maintenance workflow.
+
 After committing changes, GitHub Pages serves the repository directly. There is no build step.
