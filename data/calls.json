@@ -1,19 +1,24 @@
-﻿[
+[
   {
     "id": "msca-postdoctoral-fellowships-2026",
     "title": "MSCA Postdoctoral Fellowships 2026",
     "program": "Marie Sklodowska-Curie Actions",
     "scope": "EU",
-    "status": "closing_soon",
+    "status": "monitoring",
     "priority": "high",
     "deadline": "2026-09-09",
     "last_updated": "2026-04-07",
     "relevance": "very_high",
-    "domains": ["nuclear physics", "detector development", "international mobility"],
-    "summary": "Supports incoming or outgoing postdoctoral researchers with strong supervision, training, and mobility components.",
-    "reality_check": "Highly relevant for top individual candidates, but success depends on early host-candidate matching and a credible career development plan.",
-    "source_label": "EU Funding and Tenders Portal",
-    "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/"
+    "domains": [
+      "nuclear physics",
+      "detectors",
+      "medical physics",
+      "hpc"
+    ],
+    "summary": "Postdoctoral mobility funding for research and training in Horizon Europe.",
+    "reality_check": "Main actionable EU call for UJF, but success depends on a strong candidate-host match and early proposal setup.",
+    "source_label": "European Research Executive Agency",
+    "source_url": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en"
   },
   {
     "id": "erc-advanced-grant",
@@ -25,7 +30,11 @@
     "deadline": "2026-08-27",
     "last_updated": "2026-04-07",
     "relevance": "high",
-    "domains": ["frontier research", "theory", "large research agenda"],
+    "domains": [
+      "frontier research",
+      "theory",
+      "large research agenda"
+    ],
     "summary": "Frontier-research funding for established principal investigators with a strong track record and ambitious scientific vision.",
     "reality_check": "Important prestige instrument, but realistic only for senior researchers with exceptional publication impact and clear independence.",
     "source_label": "ERC Work Programme",
@@ -38,18 +47,23 @@
     "scope": "EU",
     "status": "open",
     "priority": "high",
-    "deadline": "2026-11-18",
+    "deadline": null,
     "last_updated": "2026-04-07",
     "relevance": "high",
-    "domains": ["research infrastructure", "large facilities", "data services"],
-    "summary": "Collaborative calls supporting transnational access, infrastructure upgrades, interoperability, and research service capacity.",
-    "reality_check": "Best fit where UJF joins a wider consortium and can offer a concrete facility, dataset, or technical capability.",
-    "source_label": "Horizon Europe Programme",
-    "source_url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en"
+    "domains": [
+      "research infrastructure",
+      "detectors",
+      "accelerators",
+      "hpc"
+    ],
+    "summary": "Collaborative Horizon Europe infrastructure calls for facility access, detector capability, and data infrastructure.",
+    "reality_check": "High relevance for UJF, but realistic mainly through prepared consortia rather than late entry.",
+    "source_label": "Research and Innovation - Research Infrastructures",
+    "source_url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/research-infrastructures_en"
   },
   {
     "id": "euratom-research-and-training-actions",
-    "title": "Euratom Research and Training Actions",
+    "title": "Euratom Research and Training Programme",
     "program": "Euratom",
     "scope": "EU",
     "status": "monitoring",
@@ -57,11 +71,17 @@
     "deadline": null,
     "last_updated": "2026-04-07",
     "relevance": "very_high",
-    "domains": ["radiation protection", "nuclear safety", "fusion-fission research"],
-    "summary": "Targeted EU calls for nuclear research, radiation protection, education, and cross-border collaboration in the Euratom framework.",
-    "reality_check": "Strategically strong for UJF, but timing depends on work programme publication and consortium preparation usually starts well before opening.",
-    "source_label": "Euratom Calls Overview",
-    "source_url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/euratom-research-and-training-programme_en"
+    "domains": [
+      "nuclear safety",
+      "radiation protection",
+      "fusion",
+      "fission",
+      "waste management"
+    ],
+    "summary": "EU nuclear programme covering nuclear safety, radiation protection, fusion, fission, and related applied research.",
+    "reality_check": "Core fit for UJF, but practical entry depends on targeted topics and consortium timing.",
+    "source_label": "Research and Innovation - Euratom Research and Training Programme",
+    "source_url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/euratom-research-and-training-programme_en"
   },
   {
     "id": "tacr-sigma-applied-research-for-public-needs",
@@ -73,7 +93,11 @@
     "deadline": "2026-05-22",
     "last_updated": "2026-04-07",
     "relevance": "medium",
-    "domains": ["applied research", "instrumentation", "public sector cooperation"],
+    "domains": [
+      "applied research",
+      "instrumentation",
+      "public sector cooperation"
+    ],
     "summary": "National applied research support for consortia solving practical public-sector or societal needs with measurable outputs.",
     "reality_check": "Useful when UJF has a concrete implementation partner and can frame deliverables beyond basic research.",
     "source_label": "TA CR Programmes",
@@ -89,7 +113,11 @@
     "deadline": null,
     "last_updated": "2026-04-07",
     "relevance": "high",
-    "domains": ["research excellence", "institutional development", "equipment"],
+    "domains": [
+      "research excellence",
+      "institutional development",
+      "equipment"
+    ],
     "summary": "Large-scale Czech calls aimed at research excellence, capacity building, and development of major scientific teams and infrastructure.",
     "reality_check": "Relevant for institutional growth, but preparation is demanding and typically requires internal prioritization well before call launch.",
     "source_label": "OP JAK Calls",

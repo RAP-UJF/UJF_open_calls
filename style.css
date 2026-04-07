@@ -41,6 +41,21 @@ a {
   margin-bottom: 2rem;
 }
 
+.header-hero {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.header-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .eyebrow {
   margin: 0 0 0.75rem;
   font-size: 0.78rem;
@@ -207,6 +222,11 @@ h1 {
   .page-shell {
     width: min(100% - 1.2rem, 1100px);
     padding-top: 2rem;
+  }
+
+  .header-hero {
+    margin-bottom: 1.2rem;
+    border-radius: 20px;
   }
 
   .call-card {
