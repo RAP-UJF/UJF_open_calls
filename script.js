@@ -3,6 +3,7 @@ const loadingState = document.getElementById("loading-state");
 const heroLastUpdated = document.getElementById("hero-last-updated");
 const heroCallCount = document.getElementById("hero-call-count");
 const DATA_URL = "data/calls.json";
+const CLOSING_SOON_DAYS = 42;
 
 const STATUS_ORDER = {
   closing_soon: 0,
@@ -62,7 +63,7 @@ function updateHero(calls) {
 }
 
 function compareCalls(a, b) {
-  const statusDelta = getStatusRank(a && a.status) - getStatusRank(b && b.status);
+  const statusDelta = getStatusRank(getDerivedStatus(a && a.deadline)) - getStatusRank(getDerivedStatus(b && b.deadline));
   if (statusDelta !== 0) {
     return statusDelta;
   }
@@ -70,17 +71,64 @@ function compareCalls(a, b) {
   return getDeadlineRank(a && a.deadline) - getDeadlineRank(b && b.deadline);
 }
 
+function getDerivedStatus(deadline) {
+  const deadlineDate = parseDateOnly(deadline);
+  if (!deadlineDate) {
+    return "monitoring";
+  }
+
+  const today = startOfDay(new Date());
+  const dayDelta = Math.ceil((deadlineDate.getTime() - today.getTime()) / 86400000);
+
+  if (dayDelta < 0) {
+    return "monitoring";
+  }
+
+  if (dayDelta <= CLOSING_SOON_DAYS) {
+    return "closing_soon";
+  }
+
+  return "open";
+}
+
 function getStatusRank(status) {
   return STATUS_ORDER[status] ?? Number.MAX_SAFE_INTEGER;
 }
 
 function getDeadlineRank(deadline) {
-  if (typeof deadline !== "string" || deadline.trim() === "") {
-    return Number.MAX_SAFE_INTEGER;
+  const deadlineDate = parseDateOnly(deadline);
+  return deadlineDate ? deadlineDate.getTime() : Number.MAX_SAFE_INTEGER;
+}
+
+function parseDateOnly(value) {
+  if (typeof value !== "string" || !value.trim()) {
+    return null;
   }
 
-  const timestamp = Date.parse(deadline);
-  return Number.isNaN(timestamp) ? Number.MAX_SAFE_INTEGER : timestamp;
+  const match = value.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    return null;
+  }
+
+  const year = Number(match[1]);
+  const month = Number(match[2]) - 1;
+  const day = Number(match[3]);
+  const date = new Date(year, month, day);
+
+  if (
+    Number.isNaN(date.getTime()) ||
+    date.getFullYear() !== year ||
+    date.getMonth() !== month ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+
+  return startOfDay(date);
+}
+
+function startOfDay(date) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
 function renderCalls(calls) {
@@ -101,7 +149,8 @@ function createCardMarkup(call) {
   const title = toText(call.title, "Untitled call");
   const program = toText(call.program, "N/A");
   const deadline = formatDeadline(call.deadline);
-  const status = formatLabel(call.status, "unknown");
+  const derivedStatus = getDerivedStatus(call.deadline);
+  const status = formatLabel(derivedStatus, "unknown");
   const relevance = formatLabel(call.relevance, "unknown");
   const summary = toText(call.summary, "No summary available.");
   const realityCheck = toText(call.reality_check, "No practical note available.");
@@ -129,13 +178,13 @@ function createCardMarkup(call) {
         </div>
         <div class="card-side">
           <span class="badge badge-neutral">${escapeHtml(scope)}</span>
-          <span class="badge badge-status-${escapeHtmlClass(call.status)}">${escapeHtml(status)}</span>
+          <span class="badge badge-status-${escapeHtmlClass(derivedStatus)}">${escapeHtml(status)}</span>
         </div>
       </div>
 
       <div class="card-badges">
         <span class="badge badge-priority-${escapeHtmlClass(call.priority)}">Priority: ${escapeHtml(priority)}</span>
-        <span class="badge badge-neutral">Relevance: ${escapeHtml(relevance)}</span>
+        <span class="badge badge-relevance-${escapeHtmlClass(call.relevance)}">Relevance: ${escapeHtml(relevance)}</span>
       </div>
 
       <div class="card-facts">
@@ -174,17 +223,14 @@ function toText(value, fallback) {
 }
 
 function formatDeadline(deadline) {
-  if (typeof deadline !== "string" || deadline.trim() === "") {
-    return "N/A";
-  }
-
-  return Number.isNaN(Date.parse(deadline)) ? "N/A" : formatDisplayDate(deadline);
+  const deadlineDate = parseDateOnly(deadline);
+  return deadlineDate ? formatDisplayDate(deadlineDate) : "N/A";
 }
 
 function formatDisplayDate(value) {
-  const date = new Date(value);
+  const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) {
-    return value;
+    return String(value);
   }
 
   return new Intl.DateTimeFormat("en-GB", {

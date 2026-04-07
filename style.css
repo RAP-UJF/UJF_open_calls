@@ -487,3 +487,25 @@ img {
 }
 
 
+
+
+
+.badge-relevance-high {
+  background: var(--highlight-soft);
+  color: #a55400;
+  border-color: rgba(255, 130, 0, 0.18);
+}
+
+.badge-relevance-very_high {
+  background: rgba(255, 130, 0, 0.24);
+  color: #8f4300;
+  border-color: rgba(255, 130, 0, 0.32);
+  box-shadow: inset 0 0 0 1px rgba(255, 130, 0, 0.12);
+}
+
+.badge-relevance-medium {
+  background: var(--surface-strong);
+  color: var(--accent-deep);
+  border-color: rgba(29, 50, 88, 0.08);
+}
+

@@ -1,8 +1,8 @@
-[
+﻿[
   {
     "id": "msca-postdoctoral-fellowships-2026",
     "title": "MSCA Postdoctoral Fellowships 2026",
-    "program": "Marie Sklodowska-Curie Actions",
+    "program": "MSCA",
     "scope": "EU",
     "status": "monitoring",
     "priority": "high",
@@ -13,11 +13,11 @@
       "nuclear physics",
       "detectors",
       "medical physics",
-      "hpc"
+      "mobility"
     ],
-    "summary": "Postdoctoral mobility funding for research and training in Horizon Europe.",
-    "reality_check": "Main actionable EU call for UJF, but success depends on a strong candidate-host match and early proposal setup.",
-    "source_label": "European Research Executive Agency",
+    "summary": "Postdoctoral mobility funding under Horizon Europe.",
+    "reality_check": "Requires strong candidate-host pairing and early proposal preparation.",
+    "source_label": "European Commission",
     "source_url": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en"
   },
   {
@@ -42,24 +42,23 @@
   },
   {
     "id": "horizon-europe-research-infrastructures-calls",
-    "title": "Horizon Europe Research Infrastructures Calls",
+    "title": "Horizon Europe Research Infrastructures 2026",
     "program": "Horizon Europe",
     "scope": "EU",
     "status": "open",
     "priority": "high",
-    "deadline": null,
+    "deadline": "2026-06-16",
     "last_updated": "2026-04-07",
     "relevance": "high",
     "domains": [
       "research infrastructure",
-      "detectors",
-      "accelerators",
-      "hpc"
+      "large facilities",
+      "data services"
     ],
-    "summary": "Collaborative Horizon Europe infrastructure calls for facility access, detector capability, and data infrastructure.",
-    "reality_check": "High relevance for UJF, but realistic mainly through prepared consortia rather than late entry.",
-    "source_label": "Research and Innovation - Research Infrastructures",
-    "source_url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/research-infrastructures_en"
+    "summary": "Funding for transnational access, infrastructure upgrades and services.",
+    "reality_check": "Requires strong consortium position and defined infrastructure contribution.",
+    "source_label": "European Commission",
+    "source_url": "https://research-and-innovation.ec.europa.eu/"
   },
   {
     "id": "euratom-research-and-training-actions",
@@ -121,6 +120,102 @@
     "summary": "Large-scale Czech calls aimed at research excellence, capacity building, and development of major scientific teams and infrastructure.",
     "reality_check": "Relevant for institutional growth, but preparation is demanding and typically requires internal prioritization well before call launch.",
     "source_label": "OP JAK Calls",
+    "source_url": "https://opjak.cz/"
+  },
+  {
+    "id": "m-era-net-call-2026",
+    "title": "M-ERA.NET Call 2026",
+    "program": "M-ERA.NET",
+    "scope": "EU",
+    "status": "open",
+    "priority": "medium",
+    "deadline": "2026-05-12",
+    "last_updated": "2026-04-07",
+    "relevance": "medium",
+    "domains": [
+      "materials",
+      "detectors",
+      "applied research"
+    ],
+    "summary": "Materials research and innovation funding in international consortia.",
+    "reality_check": "Relevant only if tied to detector or radiation-related materials.",
+    "source_label": "M-ERA.NET",
+    "source_url": "https://www.m-era.net/"
+  },
+  {
+    "id": "gacr-postdoc-individual-fellowship-2027",
+    "title": "GA CR Postdoc Individual Fellowship",
+    "program": "GA CR",
+    "scope": "CZ",
+    "status": "monitoring",
+    "priority": "medium",
+    "deadline": null,
+    "last_updated": "2026-04-07",
+    "relevance": "high",
+    "domains": [
+      "basic research",
+      "mobility"
+    ],
+    "summary": "Individual postdoctoral funding scheme in the Czech Republic.",
+    "reality_check": "Relevant for incoming candidates, but depends on a strong individual research profile.",
+    "source_label": "GA CR",
+    "source_url": "https://gacr.cz/"
+  },
+  {
+    "id": "gacr-expro",
+    "title": "GA CR EXPRO",
+    "program": "GA CR",
+    "scope": "CZ",
+    "status": "open",
+    "priority": "medium",
+    "deadline": "2026-04-20",
+    "last_updated": "2026-04-07",
+    "relevance": "high",
+    "domains": [
+      "basic research",
+      "frontier research"
+    ],
+    "summary": "High-risk, high-gain projects for experienced researchers.",
+    "reality_check": "Suitable only for top PIs with a strong publication record.",
+    "source_label": "GA CR",
+    "source_url": "https://gacr.cz/"
+  },
+  {
+    "id": "gacr-junior-star",
+    "title": "GA CR Junior Star",
+    "program": "GA CR",
+    "scope": "CZ",
+    "status": "open",
+    "priority": "medium",
+    "deadline": "2026-04-20",
+    "last_updated": "2026-04-07",
+    "relevance": "high",
+    "domains": [
+      "basic research",
+      "early career"
+    ],
+    "summary": "Funding for early-career researchers to build independent teams.",
+    "reality_check": "Relevant for junior group leaders, but requires clear scientific independence.",
+    "source_label": "GA CR",
+    "source_url": "https://gacr.cz/"
+  },
+  {
+    "id": "op-jak-vyzkumne-infrastruktury-ii",
+    "title": "OP JAK - Vyzkumne infrastruktury II",
+    "program": "OP JAK",
+    "scope": "CZ",
+    "status": "monitoring",
+    "priority": "high",
+    "deadline": null,
+    "last_updated": "2026-04-07",
+    "relevance": "high",
+    "domains": [
+      "research infrastructure",
+      "equipment"
+    ],
+    "summary": "Planned call for development of research infrastructures and e-infrastructures.",
+    "reality_check": "Relevant at institutional level, but requires internal prioritization and later call confirmation.",
+    "source_label": "OP JAK",
     "source_url": "https://opjak.cz/"
   }
 ]
