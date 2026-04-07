@@ -2,6 +2,7 @@
 const loadingState = document.getElementById("loading-state");
 const heroLastUpdated = document.getElementById("hero-last-updated");
 const heroCallCount = document.getElementById("hero-call-count");
+const domainFilter = document.getElementById("domain-filter");
 const DATA_URL = "data/calls.json";
 const CLOSING_SOON_DAYS = 42;
 
@@ -10,6 +11,9 @@ const STATUS_ORDER = {
   open: 1,
   monitoring: 2
 };
+
+let allCalls = [];
+let activeDomain = "all";
 
 loadCalls();
 
@@ -21,11 +25,11 @@ async function loadCalls() {
     }
 
     const data = await response.json();
-    const calls = Array.isArray(data) ? data.slice().sort(compareCalls) : [];
+    allCalls = Array.isArray(data) ? data.slice().sort(compareCalls) : [];
 
-    updateHero(calls);
-    renderCalls(calls);
-    loadingState.textContent = `${calls.length} call${calls.length === 1 ? "" : "s"} currently listed.`;
+    updateHero(allCalls);
+    renderDomainFilters(allCalls);
+    renderPage();
   } catch (error) {
     console.error("Failed to load funding calls:", error);
     if (heroLastUpdated) {
@@ -33,6 +37,9 @@ async function loadCalls() {
     }
     if (heroCallCount) {
       heroCallCount.textContent = "0 calls";
+    }
+    if (domainFilter) {
+      domainFilter.innerHTML = "";
     }
     loadingState.textContent = "Unable to load calls at the moment.";
     callsContainer.innerHTML = `
@@ -60,6 +67,71 @@ function updateHero(calls) {
     .at(-1);
 
   heroLastUpdated.textContent = latestUpdate ? formatDisplayDate(latestUpdate) : "Unknown";
+}
+
+function renderPage() {
+  const visibleCalls = filterCalls(allCalls, activeDomain);
+  renderCalls(visibleCalls);
+  updateLoadingState(visibleCalls.length, allCalls.length);
+}
+
+function filterCalls(calls, domain) {
+  if (domain === "all") {
+    return calls;
+  }
+
+  return calls.filter((call) => Array.isArray(call.domains) && call.domains.includes(domain));
+}
+
+function renderDomainFilters(calls) {
+  if (!domainFilter) {
+    return;
+  }
+
+  const domains = Array.from(
+    new Set(
+      calls.flatMap((call) => (Array.isArray(call.domains) ? call.domains : []))
+        .filter((domain) => typeof domain === "string" && domain.trim())
+    )
+  ).sort((a, b) => a.localeCompare(b));
+
+  const items = [
+    { value: "all", label: "All domains" },
+    ...domains.map((domain) => ({ value: domain, label: domain }))
+  ];
+
+  domainFilter.innerHTML = items.map((item) => createFilterButtonMarkup(item)).join("");
+
+  domainFilter.querySelectorAll("button[data-domain]").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeDomain = button.dataset.domain || "all";
+      renderDomainFilters(allCalls);
+      renderPage();
+    });
+  });
+}
+
+function createFilterButtonMarkup(item) {
+  const isActive = item.value === activeDomain;
+  return `
+    <button
+      type="button"
+      class="filter-chip${isActive ? " is-active" : ""}"
+      data-domain="${escapeAttribute(item.value)}"
+      aria-pressed="${isActive ? "true" : "false"}"
+    >
+      ${escapeHtml(item.label)}
+    </button>
+  `;
+}
+
+function updateLoadingState(visibleCount, totalCount) {
+  if (activeDomain === "all") {
+    loadingState.textContent = `${totalCount} call${totalCount === 1 ? "" : "s"} currently listed.`;
+    return;
+  }
+
+  loadingState.textContent = `${visibleCount} of ${totalCount} call${totalCount === 1 ? "" : "s"} shown.`;
 }
 
 function compareCalls(a, b) {
@@ -135,8 +207,8 @@ function renderCalls(calls) {
   if (!calls.length) {
     callsContainer.innerHTML = `
       <article class="empty-state">
-        <h3>No calls listed</h3>
-        <p>Update <code>data/calls.json</code> to publish funding opportunities.</p>
+        <h3>No matching calls</h3>
+        <p>Try a different research tag or return to all domains.</p>
       </article>
     `;
     return;
