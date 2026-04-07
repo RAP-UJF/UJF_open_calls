@@ -115,7 +115,16 @@ function createCardMarkup(call) {
     <article class="call-card">
       <div class="card-top">
         <div class="card-heading">
-          <h3>${escapeHtml(title)}</h3>
+          <h3>
+            <a
+              class="call-title-link"
+              href="${escapeAttribute(sourceUrl)}"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              ${escapeHtml(title)}
+            </a>
+          </h3>
           <div class="program-line">${escapeHtml(program)}</div>
         </div>
         <div class="card-side">
@@ -155,14 +164,6 @@ function createCardMarkup(call) {
 
       <div class="card-footer">
         <span class="source-note">Source: ${escapeHtml(sourceLabel)}</span>
-        <a
-          class="source-link"
-          href="${escapeAttribute(sourceUrl)}"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Open source
-        </a>
       </div>
     </article>
   `;
