@@ -16,6 +16,8 @@ REQUIRED_FIELDS = [
     "program",
     "scope",
     "status",
+    "access_barrier",
+    "opens_on",
     "priority",
     "deadline",
     "last_updated",
@@ -28,7 +30,28 @@ REQUIRED_FIELDS = [
 ]
 
 ALLOWED_SCOPE = {"EU", "CZ"}
-ALLOWED_STATUS = {"closing_soon", "open", "monitoring"}
+ALLOWED_STATUS = {
+    "closing_soon",
+    "open",
+    "open_now",
+    "open_rolling",
+    "open_partner_required",
+    "open_bilateral_partner_required",
+    "open_consortium_gated",
+    "open_excellence_gated",
+    "monitoring",
+    "monitoring_expected",
+    "monitoring_planned",
+}
+ALLOWED_ACCESS_BARRIER = {
+    "individual_entry",
+    "excellence_gated",
+    "consortium_gated",
+    "partner_required",
+    "bilateral_partner_required",
+    "institutional_only",
+    "expected_call",
+}
 ALLOWED_PRIORITY = {"high", "medium", "low"}
 ALLOWED_RELEVANCE = {"very_high", "high", "medium"}
 
@@ -92,9 +115,12 @@ def validate_payload(payload: object) -> list[str]:
 
         validate_enum(item, "scope", ALLOWED_SCOPE, record_name, errors)
         validate_enum(item, "status", ALLOWED_STATUS, record_name, errors)
+        validate_enum(item, "access_barrier", ALLOWED_ACCESS_BARRIER, record_name, errors)
         validate_enum(item, "priority", ALLOWED_PRIORITY, record_name, errors)
         validate_enum(item, "relevance", ALLOWED_RELEVANCE, record_name, errors)
 
+        validate_optional_string(item, "action_note", record_name, errors)
+        validate_iso_date(item, "opens_on", record_name, errors, allow_null=True)
         validate_iso_date(item, "last_updated", record_name, errors, allow_null=False)
         validate_iso_date(item, "deadline", record_name, errors, allow_null=True)
         validate_domains(item.get("domains"), record_name, errors)
@@ -106,6 +132,14 @@ def validate_payload(payload: object) -> list[str]:
 def validate_non_empty_string(item: dict, field: str, record_name: str, errors: list[str]) -> None:
     if not is_non_empty_string(item.get(field)):
         errors.append(f"{record_name}: '{field}' must be a non-empty string.")
+
+
+def validate_optional_string(item: dict, field: str, record_name: str, errors: list[str]) -> None:
+    value = item.get(field)
+    if value is None:
+        return
+    if not is_non_empty_string(value):
+        errors.append(f"{record_name}: '{field}' must be a non-empty string when present.")
 
 
 def validate_enum(item: dict, field: str, allowed: set[str], record_name: str, errors: list[str]) -> None:

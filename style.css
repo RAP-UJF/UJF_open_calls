@@ -346,8 +346,32 @@ button {
   border-color: rgba(133, 92, 207, 0.16);
 }
 
+.badge-status-open_bilateral_partner_required {
+  background: rgba(159, 94, 43, 0.12);
+  color: #8a4e1f;
+  border-color: rgba(159, 94, 43, 0.18);
+}
+
 .badge-status-open_consortium_gated {
   background: rgba(29, 50, 88, 0.10);
+  color: var(--accent-deep);
+  border-color: rgba(29, 50, 88, 0.14);
+}
+
+.badge-status-open_excellence_gated {
+  background: rgba(187, 63, 104, 0.10);
+  color: #8c2648;
+  border-color: rgba(187, 63, 104, 0.16);
+}
+
+.badge-status-monitoring_expected {
+  background: rgba(58, 102, 153, 0.08);
+  color: #2d557f;
+  border-color: rgba(58, 102, 153, 0.14);
+}
+
+.badge-status-monitoring_planned {
+  background: rgba(29, 50, 88, 0.09);
   color: var(--accent-deep);
   border-color: rgba(29, 50, 88, 0.14);
 }
@@ -360,7 +384,7 @@ button {
 
 .card-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.8rem;
 }
 

@@ -12,8 +12,12 @@ const STATUS_ORDER = {
   open: 2,
   open_rolling: 3,
   open_partner_required: 4,
-  open_consortium_gated: 5,
-  monitoring: 6
+  open_bilateral_partner_required: 5,
+  open_consortium_gated: 6,
+  open_excellence_gated: 7,
+  monitoring_expected: 8,
+  monitoring_planned: 9,
+  monitoring: 10
 };
 
 let allCalls = [];
@@ -234,8 +238,10 @@ function createCardMarkup(call) {
   const title = toText(call.title, "Untitled call");
   const program = toText(call.program, "N/A");
   const deadline = formatDeadline(call.deadline);
+  const openingDate = formatOpeningDate(call.opens_on);
   const resolvedStatus = resolveStatus(call);
   const status = formatStatusLabel(resolvedStatus);
+  const accessBarrier = formatAccessBarrierLabel(call.access_barrier);
   const relevance = formatLabel(call.relevance, "unknown");
   const summary = toText(call.summary, "No summary available.");
   const realityCheck = toText(call.reality_check, "No practical note available.");
@@ -275,12 +281,20 @@ function createCardMarkup(call) {
 
       <div class="card-facts">
         <div class="fact">
+          <span class="fact-label">${escapeHtml(getOpeningFactLabel(call.opens_on))}</span>
+          <span class="fact-value">${escapeHtml(openingDate)}</span>
+        </div>
+        <div class="fact">
           <span class="fact-label">Deadline</span>
           <span class="fact-value">${escapeHtml(deadline)}</span>
         </div>
         <div class="fact">
           <span class="fact-label">Status</span>
           <span class="fact-value">${escapeHtml(status)}</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Access</span>
+          <span class="fact-value">${escapeHtml(accessBarrier)}</span>
         </div>
         <div class="fact">
           <span class="fact-label">Scope</span>
@@ -314,6 +328,11 @@ function formatDeadline(deadline) {
   return deadlineDate ? formatDisplayDate(deadlineDate) : "N/A";
 }
 
+function formatOpeningDate(opensOn) {
+  const openingDate = parseDateOnly(opensOn);
+  return openingDate ? formatDisplayDate(openingDate) : "TBD";
+}
+
 function formatDisplayDate(value) {
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) {
@@ -331,6 +350,20 @@ function formatLabel(value, fallback) {
   return toText(value, fallback).replace(/_/g, " ");
 }
 
+function formatAccessBarrierLabel(value) {
+  const ACCESS_BARRIER_LABELS = {
+    individual_entry: "Individual entry",
+    excellence_gated: "Excellence-gated",
+    consortium_gated: "Consortium-gated",
+    partner_required: "Partner required",
+    bilateral_partner_required: "Bilateral partner required",
+    institutional_only: "Institutional route",
+    expected_call: "Expected call"
+  };
+
+  return ACCESS_BARRIER_LABELS[value] || formatLabel(value, "General access");
+}
+
 function formatStatusLabel(status) {
   const STATUS_LABELS = {
     closing_soon: "Closing soon",
@@ -338,11 +371,25 @@ function formatStatusLabel(status) {
     open: "Open",
     open_rolling: "Open, rolling",
     open_partner_required: "Open, partner required",
+    open_bilateral_partner_required: "Open, bilateral partner required",
     open_consortium_gated: "Open, consortium-gated",
+    open_excellence_gated: "Open, excellence-gated",
+    monitoring_expected: "Monitoring, expected",
+    monitoring_planned: "Monitoring, planned",
     monitoring: "Monitoring"
   };
 
   return STATUS_LABELS[status] || formatLabel(status, "unknown");
+}
+
+function getOpeningFactLabel(opensOn) {
+  const openingDate = parseDateOnly(opensOn);
+  if (!openingDate) {
+    return "Opens";
+  }
+
+  const today = startOfDay(new Date());
+  return openingDate.getTime() > today.getTime() ? "Opens" : "Opened";
 }
 
 function sanitizeUrl(value) {
