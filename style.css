@@ -328,6 +328,30 @@ button {
   color: var(--accent-deep);
 }
 
+.badge-status-open_now {
+  background: rgba(41, 157, 85, 0.16);
+  color: #1e6b3d;
+  border-color: rgba(41, 157, 85, 0.22);
+}
+
+.badge-status-open_rolling {
+  background: rgba(64, 126, 201, 0.12);
+  color: var(--accent-deep);
+  border-color: rgba(64, 126, 201, 0.16);
+}
+
+.badge-status-open_partner_required {
+  background: rgba(133, 92, 207, 0.10);
+  color: #5d3ba0;
+  border-color: rgba(133, 92, 207, 0.16);
+}
+
+.badge-status-open_consortium_gated {
+  background: rgba(29, 50, 88, 0.10);
+  color: var(--accent-deep);
+  border-color: rgba(29, 50, 88, 0.14);
+}
+
 .badge-status-monitoring,
 .badge-priority-low {
   background: rgba(29, 50, 88, 0.09);
@@ -369,7 +393,8 @@ button {
 }
 
 .summary,
-.insight {
+.insight,
+.action-note {
   margin: 0;
   line-height: 1.72;
 }
@@ -380,6 +405,14 @@ button {
   background: var(--accent-soft);
   border-left: 4px solid var(--accent);
   color: var(--accent-deep);
+}
+
+.action-note {
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  background: rgba(41, 157, 85, 0.10);
+  border-left: 4px solid #299d55;
+  color: #1e6b3d;
 }
 
 .tag {

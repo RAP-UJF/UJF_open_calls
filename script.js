@@ -8,8 +8,12 @@ const CLOSING_SOON_DAYS = 42;
 
 const STATUS_ORDER = {
   closing_soon: 0,
-  open: 1,
-  monitoring: 2
+  open_now: 1,
+  open: 2,
+  open_rolling: 3,
+  open_partner_required: 4,
+  open_consortium_gated: 5,
+  monitoring: 6
 };
 
 let allCalls = [];
@@ -135,12 +139,21 @@ function updateLoadingState(visibleCount, totalCount) {
 }
 
 function compareCalls(a, b) {
-  const statusDelta = getStatusRank(getDerivedStatus(a && a.deadline)) - getStatusRank(getDerivedStatus(b && b.deadline));
+  const statusDelta = getStatusRank(resolveStatus(a)) - getStatusRank(resolveStatus(b));
   if (statusDelta !== 0) {
     return statusDelta;
   }
 
   return getDeadlineRank(a && a.deadline) - getDeadlineRank(b && b.deadline);
+}
+
+function resolveStatus(call) {
+  const explicitStatus = toText(call && call.status, "").toLowerCase();
+  if (explicitStatus && STATUS_ORDER[explicitStatus] !== undefined) {
+    return explicitStatus;
+  }
+
+  return getDerivedStatus(call && call.deadline);
 }
 
 function getDerivedStatus(deadline) {
@@ -221,11 +234,12 @@ function createCardMarkup(call) {
   const title = toText(call.title, "Untitled call");
   const program = toText(call.program, "N/A");
   const deadline = formatDeadline(call.deadline);
-  const derivedStatus = getDerivedStatus(call.deadline);
-  const status = formatLabel(derivedStatus, "unknown");
+  const resolvedStatus = resolveStatus(call);
+  const status = formatStatusLabel(resolvedStatus);
   const relevance = formatLabel(call.relevance, "unknown");
   const summary = toText(call.summary, "No summary available.");
   const realityCheck = toText(call.reality_check, "No practical note available.");
+  const actionNote = toText(call.action_note, "");
   const scope = toText(call.scope, "N/A");
   const priority = formatLabel(call.priority, "unknown");
   const domains = Array.isArray(call.domains) ? call.domains.filter(Boolean) : [];
@@ -250,7 +264,7 @@ function createCardMarkup(call) {
         </div>
         <div class="card-side">
           <span class="badge badge-neutral">${escapeHtml(scope)}</span>
-          <span class="badge badge-status-${escapeHtmlClass(derivedStatus)}">${escapeHtml(status)}</span>
+          <span class="badge badge-status-${escapeHtmlClass(resolvedStatus)}">${escapeHtml(status)}</span>
         </div>
       </div>
 
@@ -277,6 +291,7 @@ function createCardMarkup(call) {
       <div class="card-copy">
         <p class="summary">${escapeHtml(summary)}</p>
         <p class="insight"><strong>Reality check:</strong> ${escapeHtml(realityCheck)}</p>
+        ${actionNote ? `<p class="action-note"><strong>Action:</strong> ${escapeHtml(actionNote)}</p>` : ""}
       </div>
 
       <div class="card-tags" aria-label="Domains">
@@ -314,6 +329,20 @@ function formatDisplayDate(value) {
 
 function formatLabel(value, fallback) {
   return toText(value, fallback).replace(/_/g, " ");
+}
+
+function formatStatusLabel(status) {
+  const STATUS_LABELS = {
+    closing_soon: "Closing soon",
+    open_now: "Open now",
+    open: "Open",
+    open_rolling: "Open, rolling",
+    open_partner_required: "Open, partner required",
+    open_consortium_gated: "Open, consortium-gated",
+    monitoring: "Monitoring"
+  };
+
+  return STATUS_LABELS[status] || formatLabel(status, "unknown");
 }
 
 function sanitizeUrl(value) {
