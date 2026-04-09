@@ -40,22 +40,31 @@ async function loadCalls() {
     renderPage();
   } catch (error) {
     console.error("Failed to load funding calls:", error);
-    if (heroLastUpdated) {
-      heroLastUpdated.textContent = "Unavailable";
-    }
-    if (heroCallCount) {
-      heroCallCount.textContent = "0 calls";
-    }
     if (domainFilter) {
       domainFilter.innerHTML = "";
     }
-    loadingState.textContent = "Unable to load calls at the moment.";
-    callsContainer.innerHTML = `
-      <article class="empty-state">
-        <h3>Data unavailable</h3>
-        <p>The calls list could not be loaded from the JSON source.</p>
-      </article>
-    `;
+
+    const hasStaticFallback = Boolean(callsContainer && callsContainer.children.length);
+    if (loadingState) {
+      loadingState.textContent = hasStaticFallback
+        ? "Showing the embedded active-calls snapshot. Live refresh is unavailable at the moment."
+        : "Unable to load calls at the moment.";
+    }
+
+    if (!hasStaticFallback) {
+      if (heroLastUpdated) {
+        heroLastUpdated.textContent = "Unavailable";
+      }
+      if (heroCallCount) {
+        heroCallCount.textContent = "0 calls";
+      }
+      callsContainer.innerHTML = `
+        <article class="empty-state">
+          <h3>Data unavailable</h3>
+          <p>The calls list could not be loaded from the JSON source.</p>
+        </article>
+      `;
+    }
   }
 }
 

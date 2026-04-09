@@ -42,9 +42,10 @@ If the same call already exists, update the existing record instead of creating 
 1. Review the official source.
 2. Add or update the record in `data/calls.json`.
 3. Update `last_updated`.
-4. Run `python tools/validate_calls.py`.
-5. Commit and push.
-6. Let GitHub Actions confirm the same validation on push or pull request.
+4. Run `py tools/render_static_fallback.py` to refresh the public HTML fallback with currently active calls.
+5. Run `py tools/validate_calls.py`.
+6. Commit and push.
+7. Let GitHub Actions confirm the same validation on push or pull request.
 
 ## Retirement and cleanup
 
