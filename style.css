@@ -241,6 +241,11 @@ button {
   box-shadow: var(--shadow-soft);
 }
 
+.call-card[hidden],
+.empty-state[hidden] {
+  display: none !important;
+}
+
 .call-card {
   display: flex;
   flex-direction: column;
@@ -287,7 +292,7 @@ button {
 .card-side {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 0.45rem;
 }
 
 .card-side {
@@ -298,16 +303,17 @@ button {
 .tag {
   display: inline-flex;
   align-items: center;
-  min-height: 2rem;
-  padding: 0.36rem 0.78rem;
+  min-height: 1.8rem;
+  padding: 0.28rem 0.64rem;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 .badge {
   border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .badge-neutral {
@@ -389,15 +395,21 @@ button {
 }
 
 .fact {
-  padding: 0.85rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 0.65rem 0.8rem;
   border-radius: 18px;
   background: var(--surface-strong);
   border: 1px solid rgba(29, 50, 88, 0.10);
+  text-align: left;
 }
 
 .fact-label {
   display: block;
-  margin-bottom: 0.35rem;
+  margin-left: 0;
+  margin-bottom: 0.22rem;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -406,9 +418,34 @@ button {
 }
 
 .fact-value {
-  font-size: 0.94rem;
+  display: block;
+  width: 100%;
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.2;
   font-weight: 700;
   color: var(--text);
+  text-align: left;
+}
+
+.fact-value a {
+  color: inherit;
+  text-decoration-color: rgba(29, 50, 88, 0.25);
+  text-underline-offset: 0.14em;
+  word-break: break-word;
+}
+
+.fact-status .fact-value {
+  white-space: nowrap;
+  font-size: 0.86rem;
+}
+
+.fact-domains,
+.fact-source-url,
+.fact-source-label,
+.fact-priority,
+.fact-relevance {
+  display: none;
 }
 
 .card-copy {
@@ -516,10 +553,6 @@ button {
   .hero-meta,
   .card-facts {
     grid-template-columns: 1fr;
-  }
-
-  .card-facts {
-    display: grid;
   }
 
   .cards-grid {

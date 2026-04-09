@@ -3,8 +3,14 @@ const loadingState = document.getElementById("loading-state");
 const heroLastUpdated = document.getElementById("hero-last-updated");
 const heroCallCount = document.getElementById("hero-call-count");
 const domainFilter = document.getElementById("domain-filter");
+const accessFilter = document.getElementById("access-filter");
 const DATA_URL = "data/calls.json";
 const CLOSING_SOON_DAYS = 42;
+const PARTNERSHIP_ACCESS_BARRIERS = new Set([
+  "partner_required",
+  "bilateral_partner_required",
+  "consortium_gated"
+]);
 
 const STATUS_ORDER = {
   closing_soon: 0,
@@ -22,6 +28,7 @@ const STATUS_ORDER = {
 
 let allCalls = [];
 let activeDomain = "all";
+let activeAccess = "all";
 
 loadCalls();
 
@@ -37,17 +44,21 @@ async function loadCalls() {
 
     updateHero(allCalls);
     renderDomainFilters(allCalls);
+    renderAccessFilters();
     renderPage();
   } catch (error) {
     console.error("Failed to load funding calls:", error);
     if (domainFilter) {
       domainFilter.innerHTML = "";
     }
+    if (accessFilter) {
+      accessFilter.innerHTML = "";
+    }
 
     const hasStaticFallback = Boolean(callsContainer && callsContainer.children.length);
     if (loadingState) {
       loadingState.textContent = hasStaticFallback
-        ? "Showing the embedded active-calls snapshot. Live refresh is unavailable at the moment."
+        ? "Showing the embedded calls snapshot. Live refresh is unavailable at the moment."
         : "Unable to load calls at the moment.";
     }
 
@@ -87,17 +98,41 @@ function updateHero(calls) {
 }
 
 function renderPage() {
-  const visibleCalls = filterCalls(allCalls, activeDomain);
-  renderCalls(visibleCalls);
-  updateLoadingState(visibleCalls.length, allCalls.length);
+  const domainFilterSource = filterCalls(allCalls, "all", activeAccess);
+  syncActiveDomain(domainFilterSource);
+  renderDomainFilters(domainFilterSource);
+
+  const visibleCount = applyFiltersToDom(activeDomain, activeAccess);
+  updateLoadingState(visibleCount, allCalls.length);
 }
 
-function filterCalls(calls, domain) {
+function filterCalls(calls, domain, access) {
+  return calls.filter((call) => matchesDomainFilter(call, domain) && matchesAccessFilter(call, access));
+}
+
+function matchesDomainFilter(call, domain) {
   if (domain === "all") {
-    return calls;
+    return true;
   }
 
-  return calls.filter((call) => Array.isArray(call.domains) && call.domains.includes(domain));
+  return Array.isArray(call.domains) && call.domains.includes(domain);
+}
+
+function matchesAccessFilter(call, access) {
+  if (access === "all") {
+    return true;
+  }
+
+  const accessBarrier = toText(call && call.access_barrier, "");
+  if (access === "individual_entry") {
+    return accessBarrier === "individual_entry";
+  }
+
+  if (access === "partnership") {
+    return PARTNERSHIP_ACCESS_BARRIERS.has(accessBarrier);
+  }
+
+  return true;
 }
 
 function renderDomainFilters(calls) {
@@ -122,7 +157,43 @@ function renderDomainFilters(calls) {
   domainFilter.querySelectorAll("button[data-domain]").forEach((button) => {
     button.addEventListener("click", () => {
       activeDomain = button.dataset.domain || "all";
-      renderDomainFilters(allCalls);
+      renderPage();
+    });
+  });
+}
+
+function syncActiveDomain(calls) {
+  if (activeDomain === "all") {
+    return;
+  }
+
+  const availableDomains = new Set(
+    calls.flatMap((call) => (Array.isArray(call.domains) ? call.domains : []))
+      .filter((domain) => typeof domain === "string" && domain.trim())
+  );
+
+  if (!availableDomains.has(activeDomain)) {
+    activeDomain = "all";
+  }
+}
+
+function renderAccessFilters() {
+  if (!accessFilter) {
+    return;
+  }
+
+  const items = [
+    { value: "all", label: "All access" },
+    { value: "individual_entry", label: "Individual entry" },
+    { value: "partnership", label: "Partnership" }
+  ];
+
+  accessFilter.innerHTML = items.map((item) => createAccessFilterButtonMarkup(item)).join("");
+
+  accessFilter.querySelectorAll("button[data-access]").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeAccess = button.dataset.access || "all";
+      renderAccessFilters();
       renderPage();
     });
   });
@@ -142,8 +213,22 @@ function createFilterButtonMarkup(item) {
   `;
 }
 
+function createAccessFilterButtonMarkup(item) {
+  const isActive = item.value === activeAccess;
+  return `
+    <button
+      type="button"
+      class="filter-chip${isActive ? " is-active" : ""}"
+      data-access="${escapeAttribute(item.value)}"
+      aria-pressed="${isActive ? "true" : "false"}"
+    >
+      ${escapeHtml(item.label)}
+    </button>
+  `;
+}
+
 function updateLoadingState(visibleCount, totalCount) {
-  if (activeDomain === "all") {
+  if (activeDomain === "all" && activeAccess === "all") {
     loadingState.textContent = `${totalCount} call${totalCount === 1 ? "" : "s"} currently listed.`;
     return;
   }
@@ -229,117 +314,80 @@ function startOfDay(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
-function renderCalls(calls) {
-  if (!calls.length) {
-    callsContainer.innerHTML = `
-      <article class="empty-state">
-        <h3>No matching calls</h3>
-        <p>Try a different research tag or return to all domains.</p>
-      </article>
-    `;
-    return;
+function applyFiltersToDom(domain, access) {
+  if (!callsContainer) {
+    return 0;
   }
 
-  callsContainer.innerHTML = calls.map(createCardMarkup).join("");
+  const articles = Array.from(callsContainer.querySelectorAll("article[data-call-id]"));
+
+  if (!articles.length) {
+    return 0;
+  }
+
+  let visibleCount = 0;
+  articles.forEach((article) => {
+    const articleDomains = parseArticleDomains(article.dataset.domains || "");
+    const accessBarrier = article.dataset.accessBarrier || "";
+    const matchesDomain = domain === "all" || articleDomains.includes(domain);
+    const matchesAccess = matchesAccessBarrier(accessBarrier, access);
+    const isVisible = matchesDomain && matchesAccess;
+    article.hidden = !isVisible;
+    if (isVisible) {
+      visibleCount += 1;
+    }
+  });
+
+  let emptyState = callsContainer.querySelector(".empty-state");
+  const hasVisibleArticles = articles.some((article) => !article.hidden);
+
+  if (!hasVisibleArticles) {
+    if (!emptyState) {
+      emptyState = document.createElement("article");
+      emptyState.className = "empty-state";
+      emptyState.innerHTML = `
+        <h3>No matching calls</h3>
+        <p>Try a different research tag or return to all domains.</p>
+      `;
+      callsContainer.appendChild(emptyState);
+    }
+    emptyState.hidden = false;
+    return 0;
+  }
+
+  if (emptyState) {
+    emptyState.hidden = true;
+  }
+
+  return visibleCount;
 }
 
-function createCardMarkup(call) {
-  const title = toText(call.title, "Untitled call");
-  const program = toText(call.program, "N/A");
-  const deadline = formatDeadline(call.deadline);
-  const openingDate = formatOpeningDate(call.opens_on);
-  const resolvedStatus = resolveStatus(call);
-  const status = formatStatusLabel(resolvedStatus);
-  const accessBarrier = formatAccessBarrierLabel(call.access_barrier);
-  const relevance = formatLabel(call.relevance, "unknown");
-  const summary = toText(call.summary, "No summary available.");
-  const realityCheck = toText(call.reality_check, "No practical note available.");
-  const actionNote = toText(call.action_note, "");
-  const scope = toText(call.scope, "N/A");
-  const priority = formatLabel(call.priority, "unknown");
-  const domains = Array.isArray(call.domains) ? call.domains.filter(Boolean) : [];
-  const sourceLabel = toText(call.source_label, "Source");
-  const sourceUrl = sanitizeUrl(call.source_url);
+function parseArticleDomains(value) {
+  if (!value) {
+    return [];
+  }
 
-  return `
-    <article class="call-card">
-      <div class="card-top">
-        <div class="card-heading">
-          <h3>
-            <a
-              class="call-title-link"
-              href="${escapeAttribute(sourceUrl)}"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              ${escapeHtml(title)}
-            </a>
-          </h3>
-          <div class="program-line">${escapeHtml(program)}</div>
-        </div>
-        <div class="card-side">
-          <span class="badge badge-neutral">${escapeHtml(scope)}</span>
-          <span class="badge badge-status-${escapeHtmlClass(resolvedStatus)}">${escapeHtml(status)}</span>
-        </div>
-      </div>
+  return value.split("|").filter((entry) => entry && entry.trim());
+}
 
-      <div class="card-badges">
-        <span class="badge badge-priority-${escapeHtmlClass(call.priority)}">Priority: ${escapeHtml(priority)}</span>
-        <span class="badge badge-relevance-${escapeHtmlClass(call.relevance)}">Relevance: ${escapeHtml(relevance)}</span>
-      </div>
+function matchesAccessBarrier(accessBarrier, access) {
+  if (access === "all") {
+    return true;
+  }
 
-      <div class="card-facts">
-        <div class="fact">
-          <span class="fact-label">${escapeHtml(getOpeningFactLabel(call.opens_on))}</span>
-          <span class="fact-value">${escapeHtml(openingDate)}</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Deadline</span>
-          <span class="fact-value">${escapeHtml(deadline)}</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Status</span>
-          <span class="fact-value">${escapeHtml(status)}</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Access</span>
-          <span class="fact-value">${escapeHtml(accessBarrier)}</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Scope</span>
-          <span class="fact-value">${escapeHtml(scope)}</span>
-        </div>
-      </div>
+  if (access === "individual_entry") {
+    return accessBarrier === "individual_entry";
+  }
 
-      <div class="card-copy">
-        <p class="summary">${escapeHtml(summary)}</p>
-        <p class="insight"><strong>Reality check:</strong> ${escapeHtml(realityCheck)}</p>
-        ${actionNote ? `<p class="action-note"><strong>Action:</strong> ${escapeHtml(actionNote)}</p>` : ""}
-      </div>
+  if (access === "partnership") {
+    return PARTNERSHIP_ACCESS_BARRIERS.has(accessBarrier);
+  }
 
-      <div class="card-tags" aria-label="Domains">
-        ${domains.length ? domains.map((domain) => `<span class="tag">${escapeHtml(domain)}</span>`).join("") : '<span class="tag">General research</span>'}
-      </div>
-
-      <div class="card-footer">
-        <span class="source-note">Source: ${escapeHtml(sourceLabel)}</span>
-      </div>
-    </article>
-  `;
+  return true;
 }
 
 function toText(value, fallback) {
   return typeof value === "string" && value.trim() ? value.trim() : fallback;
-}
-
-function formatDeadline(deadline) {
-  const deadlineDate = parseDateOnly(deadline);
-  return deadlineDate ? formatDisplayDate(deadlineDate) : "N/A";
-}
-
-function formatOpeningDate(opensOn) {
-  const openingDate = parseDateOnly(opensOn);
-  return openingDate ? formatDisplayDate(openingDate) : "TBD";
 }
 
 function formatDisplayDate(value) {
@@ -355,56 +403,6 @@ function formatDisplayDate(value) {
   }).format(date);
 }
 
-function formatLabel(value, fallback) {
-  return toText(value, fallback).replace(/_/g, " ");
-}
-
-function formatAccessBarrierLabel(value) {
-  const ACCESS_BARRIER_LABELS = {
-    individual_entry: "Individual entry",
-    excellence_gated: "Excellence-gated",
-    consortium_gated: "Consortium-gated",
-    partner_required: "Partner required",
-    bilateral_partner_required: "Bilateral partner required",
-    institutional_only: "Institutional route",
-    expected_call: "Expected call"
-  };
-
-  return ACCESS_BARRIER_LABELS[value] || formatLabel(value, "General access");
-}
-
-function formatStatusLabel(status) {
-  const STATUS_LABELS = {
-    closing_soon: "Closing soon",
-    open_now: "Open now",
-    open: "Open",
-    open_rolling: "Open, rolling",
-    open_partner_required: "Open, partner required",
-    open_bilateral_partner_required: "Open, bilateral partner required",
-    open_consortium_gated: "Open, consortium-gated",
-    open_excellence_gated: "Open, excellence-gated",
-    monitoring_expected: "Monitoring, expected",
-    monitoring_planned: "Monitoring, planned",
-    monitoring: "Monitoring"
-  };
-
-  return STATUS_LABELS[status] || formatLabel(status, "unknown");
-}
-
-function getOpeningFactLabel(opensOn) {
-  const openingDate = parseDateOnly(opensOn);
-  if (!openingDate) {
-    return "Opens";
-  }
-
-  const today = startOfDay(new Date());
-  return openingDate.getTime() > today.getTime() ? "Opens" : "Opened";
-}
-
-function sanitizeUrl(value) {
-  return typeof value === "string" && /^https?:\/\//i.test(value.trim()) ? value.trim() : "#";
-}
-
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -416,8 +414,4 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value);
-}
-
-function escapeHtmlClass(value) {
-  return String(value || "unknown").replace(/[^a-z0-9_-]/gi, "").toLowerCase();
 }

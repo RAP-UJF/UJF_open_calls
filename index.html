@@ -31,8 +31,8 @@
             <strong id="hero-last-updated">08 Apr 2026</strong>
           </div>
           <div class="meta-chip">
-            <span class="meta-label">Active records</span>
-            <strong id="hero-call-count">9 calls</strong>
+            <span class="meta-label">Records</span>
+            <strong id="hero-call-count">12 calls</strong>
           </div>
 
         </div>
@@ -48,9 +48,13 @@
     <main class="page-main">
       <section class="filter-slice" aria-label="Research tag filter">
         <div class="filter-head">
-          <p class="section-kicker filter-label">Research tags</p>
+          <p class="section-kicker filter-label">Domains</p>
         </div>
         <div id="domain-filter" class="filter-tags" aria-live="polite"></div>
+        <div class="filter-head">
+          <p class="section-kicker filter-label">Access route</p>
+        </div>
+        <div id="access-filter" class="filter-tags" aria-live="polite"></div>
       </section>
 
       <section class="content-head" aria-live="polite">
@@ -58,12 +62,122 @@
           <p class="section-kicker">Current list</p>
           <h2>Research funding calls</h2>
         </div>
-        <p id="loading-state" class="status-panel">9 active calls are listed below. JavaScript refreshes the full list, including monitored opportunities.</p>
+        <p id="loading-state" class="status-panel">12 calls are listed below. JavaScript enhances filtering and refresh.</p>
+      </section>
+
+      <section class="machine-summary" aria-labelledby="machine-summary-title" hidden>
+        <div class="content-head">
+          <div>
+            <p class="section-kicker">Machine-readable summary</p>
+            <h2 id="machine-summary-title">All calls summary</h2>
+          </div>
+        </div>
+        <div class="summary-table-wrap">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Opens</th>
+                <th>Deadline</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+<!-- STATIC_MACHINE_SUMMARY_START -->
+              <tr>
+                <td>GA CR EXPRO</td>
+                <td>Closing soon</td>
+                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
+                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
+                <td><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
+              </tr>
+              <tr>
+                <td>GA CR Junior Star</td>
+                <td>Closing soon</td>
+                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
+                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
+                <td><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
+              </tr>
+              <tr>
+                <td>MSCA Postdoctoral Fellowships 2026</td>
+                <td>Open now</td>
+                <td><time datetime="2026-04-09">09 Apr 2026</time></td>
+                <td><time datetime="2026-09-09">09 Sep 2026</time></td>
+                <td><a href="https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en" target="_blank" rel="noreferrer noopener">European Commission</a></td>
+              </tr>
+              <tr>
+                <td>Euratom Research and Training Programme</td>
+                <td>Open, rolling</td>
+                <td>TBD</td>
+                <td>N/A</td>
+                <td><a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/euratom-research-and-training-programme_en" target="_blank" rel="noreferrer noopener">Research and Innovation - Euratom Research and Training Programme</a></td>
+              </tr>
+              <tr>
+                <td>TA CR SIGMA - Applied Research for Public Needs</td>
+                <td>Open, partner required</td>
+                <td>TBD</td>
+                <td><time datetime="2026-05-22">22 May 2026</time></td>
+                <td><a href="https://www.tacr.cz/en/programmes/" target="_blank" rel="noreferrer noopener">TA CR Programmes</a></td>
+              </tr>
+              <tr>
+                <td>GA CR - Croatia-Czech Projects 2027</td>
+                <td>Open, bilateral partner required</td>
+                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
+                <td><time datetime="2026-05-04">04 May 2026</time></td>
+                <td><a href="https://gacr.cz/vyzva-pro-podavani-chorvatsko-ceskych-projektu-2027/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
+              </tr>
+              <tr>
+                <td>M-ERA.NET Call 2026</td>
+                <td>Open, consortium-gated</td>
+                <td><time datetime="2026-03-04">04 Mar 2026</time></td>
+                <td><time datetime="2026-05-12">12 May 2026</time></td>
+                <td><a href="https://www.m-era.net/" target="_blank" rel="noreferrer noopener">M-ERA.NET</a></td>
+              </tr>
+              <tr>
+                <td>Horizon Europe Research Infrastructures 2026</td>
+                <td>Open, consortium-gated</td>
+                <td>TBD</td>
+                <td><time datetime="2026-06-16">16 Jun 2026</time></td>
+                <td><a href="https://research-and-innovation.ec.europa.eu/" target="_blank" rel="noreferrer noopener">European Commission</a></td>
+              </tr>
+              <tr>
+                <td>ERC Advanced Grant</td>
+                <td>Open, excellence-gated</td>
+                <td>TBD</td>
+                <td><time datetime="2026-08-27">27 Aug 2026</time></td>
+                <td><a href="https://erc.europa.eu/" target="_blank" rel="noreferrer noopener">ERC Work Programme</a></td>
+              </tr>
+              <tr>
+                <td>GA CR Postdoc Individual Fellowship</td>
+                <td>Monitoring, expected</td>
+                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
+                <td>N/A</td>
+                <td><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
+              </tr>
+              <tr>
+                <td>OP JAK - Top Research</td>
+                <td>Monitoring, planned</td>
+                <td>TBD</td>
+                <td>N/A</td>
+                <td><a href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">OP JAK Calls</a></td>
+              </tr>
+              <tr>
+                <td>OP JAK - Vyzkumne infrastruktury II</td>
+                <td>Monitoring, planned</td>
+                <td>TBD</td>
+                <td>N/A</td>
+                <td><a href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">OP JAK</a></td>
+              </tr>
+<!-- STATIC_MACHINE_SUMMARY_END -->
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section id="calls-container" class="cards-grid" aria-label="Funding calls">
-<!-- STATIC_ACTIVE_CALLS_START -->
-        <article class="call-card">
+<!-- STATIC_ALL_CALLS_START -->
+        <article class="call-card" data-call-id="gacr-expro" data-status="closing_soon" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="excellence_gated" data-domains="basic research|frontier research">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -76,12 +190,66 @@
               <span class="badge badge-status-closing_soon">Closing soon</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Closing soon</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Excellence-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">basic research, frontier research</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">https://gacr.cz/</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 20 Apr 2026. High-risk, high-gain projects for experienced researchers.</p>
+            <p class="summary">High-risk, high-gain projects for experienced researchers.</p>
             <p class="insight"><strong>Reality check:</strong> Technically still open, but the window is short and realistic only for top PIs with a strong publication record and near-ready concept.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">basic research</span><span class="tag">frontier research</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="gacr-junior-star" data-status="closing_soon" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="individual_entry" data-domains="basic research|early career">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -94,12 +262,66 @@
               <span class="badge badge-status-closing_soon">Closing soon</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Closing soon</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Individual entry</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">basic research, early career</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">https://gacr.cz/</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 20 Apr 2026. Funding for early-career researchers to build independent teams.</p>
+            <p class="summary">Funding for early-career researchers to build independent teams.</p>
             <p class="insight"><strong>Reality check:</strong> Technically still open, but the remaining window is short and the call is realistic only for junior researchers with clearly demonstrated independence.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">basic research</span><span class="tag">early career</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="msca-postdoctoral-fellowships-2026" data-status="open_now" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="individual_entry" data-domains="nuclear physics|particle physics|detectors|medical physics|mobility|HPC|simulation|AI in physics">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -112,12 +334,66 @@
               <span class="badge badge-status-open_now">Open now</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-high">Priority: high</span>
+            <span class="badge badge-relevance-very_high">Relevance: very high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">MSCA</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">EU</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Open now</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-04-09">09 Apr 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-09-09">09 Sep 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">very high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Individual entry</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">nuclear physics, particle physics, detectors, medical physics, mobility, HPC, simulation, AI in physics</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">European Commission</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en" target="_blank" rel="noreferrer noopener">https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 09 Sep 2026. Main newly open Horizon Europe postdoctoral mobility window with bottom-up topic selection and very high relevance for UJF.</p>
+            <p class="summary">Main newly open Horizon Europe postdoctoral mobility window with bottom-up topic selection and very high relevance for UJF.</p>
             <p class="insight"><strong>Reality check:</strong> This is the clearest open entry point right now, but success depends mainly on a strong candidate-host pairing, early preparation, and a convincing scientific profile with interdisciplinary or data-heavy momentum.</p>
+            <p class="action-note"><strong>Action:</strong> Highest-priority active window for immediate candidate scouting and proposal shaping.</p>
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">nuclear physics</span><span class="tag">particle physics</span><span class="tag">detectors</span><span class="tag">medical physics</span><span class="tag">mobility</span><span class="tag">HPC</span><span class="tag">simulation</span><span class="tag">AI in physics</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="euratom-research-and-training-actions" data-status="open_rolling" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="consortium_gated" data-domains="nuclear safety|radiation protection|fusion|fission|waste management|detectors|medical physics|materials">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -130,12 +406,66 @@
               <span class="badge badge-status-open_rolling">Open, rolling</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-high">Priority: high</span>
+            <span class="badge badge-relevance-very_high">Relevance: very high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">Euratom</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">EU</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Open, rolling</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value">N/A</dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">very high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Consortium-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">nuclear safety, radiation protection, fusion, fission, waste management, detectors, medical physics, materials</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">Research and Innovation - Euratom Research and Training Programme</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/euratom-research-and-training-programme_en" target="_blank" rel="noreferrer noopener">https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/euratom-research-and-training-programme_en</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">No fixed deadline published. Core EU nuclear funding stream spanning radiation protection, safety, fusion, fission, waste, and adjacent applied research themes.</p>
+            <p class="summary">Core EU nuclear funding stream spanning radiation protection, safety, fusion, fission, waste, and adjacent applied research themes.</p>
             <p class="insight"><strong>Reality check:</strong> Strategically key for UJF, but the current shift favors applications, higher TRL, and industry involvement over purely academic physics positioning.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">nuclear safety</span><span class="tag">radiation protection</span><span class="tag">fusion</span><span class="tag">fission</span><span class="tag">waste management</span><span class="tag">detectors</span><span class="tag">medical physics</span><span class="tag">materials</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="tacr-sigma-applied-research-for-public-needs" data-status="open_partner_required" data-scope="CZ" data-priority="medium" data-relevance="medium" data-access-barrier="partner_required" data-domains="applied research|instrumentation|public sector cooperation">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -148,12 +478,66 @@
               <span class="badge badge-status-open_partner_required">Open, partner required</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-medium">Relevance: medium</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">TA CR</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Open, partner required</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-05-22">22 May 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Partner required</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">applied research, instrumentation, public sector cooperation</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">TA CR Programmes</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://www.tacr.cz/en/programmes/" target="_blank" rel="noreferrer noopener">https://www.tacr.cz/en/programmes/</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 22 May 2026. National applied research support for consortia solving practical public-sector or societal needs with measurable outputs.</p>
+            <p class="summary">National applied research support for consortia solving practical public-sector or societal needs with measurable outputs.</p>
             <p class="insight"><strong>Reality check:</strong> Open and potentially relevant, but the practical chance stays low without a concrete implementation or industry-facing partner and a deliverable beyond basic research.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">applied research</span><span class="tag">instrumentation</span><span class="tag">public sector cooperation</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="gacr-croatia-czech-projects-2027" data-status="open_bilateral_partner_required" data-scope="CZ" data-priority="medium" data-relevance="medium" data-access-barrier="bilateral_partner_required" data-domains="basic research|international collaboration">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -166,12 +550,66 @@
               <span class="badge badge-status-open_bilateral_partner_required">Open, bilateral partner required</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-medium">Relevance: medium</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Open, bilateral partner required</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-05-04">04 May 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Bilateral partner required</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">basic research, international collaboration</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://gacr.cz/vyzva-pro-podavani-chorvatsko-ceskych-projektu-2027/" target="_blank" rel="noreferrer noopener">https://gacr.cz/vyzva-pro-podavani-chorvatsko-ceskych-projektu-2027/</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 04 May 2026. Bilateral GA CR and HRZZ call for Croatia-Czech basic research projects under the Lead Agency scheme.</p>
+            <p class="summary">Bilateral GA CR and HRZZ call for Croatia-Czech basic research projects under the Lead Agency scheme.</p>
             <p class="insight"><strong>Reality check:</strong> Relevant only where an existing Czech-Croatian partnership already exists; the bilateral partner route is the main gating factor, not just the deadline.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">basic research</span><span class="tag">international collaboration</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="m-era-net-call-2026" data-status="open_consortium_gated" data-scope="EU" data-priority="medium" data-relevance="medium" data-access-barrier="consortium_gated" data-domains="materials|detectors|applied research">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -184,12 +622,66 @@
               <span class="badge badge-status-open_consortium_gated">Open, consortium-gated</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-medium">Relevance: medium</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">M-ERA.NET</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">EU</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Open, consortium-gated</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-03-04">04 Mar 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-05-12">12 May 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Consortium-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">materials, detectors, applied research</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">M-ERA.NET</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://www.m-era.net/" target="_blank" rel="noreferrer noopener">https://www.m-era.net/</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 12 May 2026. Materials research and innovation funding in international consortia with potential detector and radiation-material overlap.</p>
+            <p class="summary">Materials research and innovation funding in international consortia with potential detector and radiation-material overlap.</p>
             <p class="insight"><strong>Reality check:</strong> Potentially relevant, but only through a prepared international consortium and a concrete detector or radiation-material angle.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">materials</span><span class="tag">detectors</span><span class="tag">applied research</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="horizon-europe-research-infrastructures-calls" data-status="open_consortium_gated" data-scope="EU" data-priority="high" data-relevance="high" data-access-barrier="consortium_gated" data-domains="research infrastructure|large facilities|data services|detectors|HPC|AI">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -202,12 +694,66 @@
               <span class="badge badge-status-open_consortium_gated">Open, consortium-gated</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-high">Priority: high</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">Horizon Europe</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">EU</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Open, consortium-gated</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-06-16">16 Jun 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Consortium-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">research infrastructure, large facilities, data services, detectors, HPC, AI</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">European Commission</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://research-and-innovation.ec.europa.eu/" target="_blank" rel="noreferrer noopener">https://research-and-innovation.ec.europa.eu/</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 16 Jun 2026. Active INFRA calls for access, upgrades, and service development across major research infrastructures and data ecosystems.</p>
+            <p class="summary">Active INFRA calls for access, upgrades, and service development across major research infrastructures and data ecosystems.</p>
             <p class="insight"><strong>Reality check:</strong> Very relevant for UJF, but practical entry usually requires an existing RI network position or long-term partners rather than a fresh standalone bid.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">research infrastructure</span><span class="tag">large facilities</span><span class="tag">data services</span><span class="tag">detectors</span><span class="tag">HPC</span><span class="tag">AI</span>
           </div>
         </article>
-        <article class="call-card">
+        <article class="call-card" data-call-id="erc-advanced-grant" data-status="open_excellence_gated" data-scope="EU" data-priority="medium" data-relevance="high" data-access-barrier="excellence_gated" data-domains="frontier research|theory|large research agenda">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -220,16 +766,546 @@
               <span class="badge badge-status-open_excellence_gated">Open, excellence-gated</span>
             </div>
           </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">European Research Council</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">EU</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Open, excellence-gated</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-08-27">27 Aug 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Excellence-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">frontier research, theory, large research agenda</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">ERC Work Programme</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://erc.europa.eu/" target="_blank" rel="noreferrer noopener">https://erc.europa.eu/</a></dd>
+            </div>
+          </dl>
           <div class="card-copy">
-            <p class="summary">Deadline 27 Aug 2026. Frontier-research funding for established principal investigators with a strong track record and ambitious scientific vision.</p>
+            <p class="summary">Frontier-research funding for established principal investigators with a strong track record and ambitious scientific vision.</p>
             <p class="insight"><strong>Reality check:</strong> Open on paper, but effectively restricted to senior researchers with exceptional track record, sharp independence, and a genuinely ambitious agenda.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">frontier research</span><span class="tag">theory</span><span class="tag">large research agenda</span>
           </div>
         </article>
-<!-- STATIC_ACTIVE_CALLS_END -->
+        <article class="call-card" data-call-id="gacr-postdoc-individual-fellowship-2027" data-status="monitoring_expected" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="expected_call" data-domains="basic research|mobility">
+          <div class="card-top">
+            <div class="card-heading">
+              <h3>
+                <a class="call-title-link" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR Postdoc Individual Fellowship</a>
+              </h3>
+              <div class="program-line">GA CR</div>
+            </div>
+            <div class="card-side">
+              <span class="badge badge-neutral">CZ</span>
+              <span class="badge badge-status-monitoring_expected">Monitoring, expected</span>
+            </div>
+          </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Monitoring, expected</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value">N/A</dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Expected call</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">basic research, mobility</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">https://gacr.cz/</a></dd>
+            </div>
+          </dl>
+          <div class="card-copy">
+            <p class="summary">Individual postdoctoral funding scheme in the Czech Republic.</p>
+            <p class="insight"><strong>Reality check:</strong> Worth watching as an expected individual route for incoming candidates, but it still depends on a very strong applicant profile and confirmed call timing.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">basic research</span><span class="tag">mobility</span>
+          </div>
+        </article>
+        <article class="call-card" data-call-id="op-jak-top-research" data-status="monitoring_planned" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="institutional_only" data-domains="research excellence|institutional development|equipment">
+          <div class="card-top">
+            <div class="card-heading">
+              <h3>
+                <a class="call-title-link" href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">OP JAK - Top Research</a>
+              </h3>
+              <div class="program-line">OP JAK</div>
+            </div>
+            <div class="card-side">
+              <span class="badge badge-neutral">CZ</span>
+              <span class="badge badge-status-monitoring_planned">Monitoring, planned</span>
+            </div>
+          </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">OP JAK</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Monitoring, planned</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value">N/A</dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Institutional route</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">research excellence, institutional development, equipment</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">OP JAK Calls</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">https://opjak.cz/</a></dd>
+            </div>
+          </dl>
+          <div class="card-copy">
+            <p class="summary">Large-scale Czech calls aimed at research excellence, capacity building, and development of major scientific teams and infrastructure.</p>
+            <p class="insight"><strong>Reality check:</strong> Relevant for institutional growth, but this is mainly a planned institutional track that needs internal prioritization long before launch.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">research excellence</span><span class="tag">institutional development</span><span class="tag">equipment</span>
+          </div>
+        </article>
+        <article class="call-card" data-call-id="op-jak-vyzkumne-infrastruktury-ii" data-status="monitoring_planned" data-scope="CZ" data-priority="high" data-relevance="high" data-access-barrier="institutional_only" data-domains="research infrastructure|equipment">
+          <div class="card-top">
+            <div class="card-heading">
+              <h3>
+                <a class="call-title-link" href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">OP JAK - Vyzkumne infrastruktury II</a>
+              </h3>
+              <div class="program-line">OP JAK</div>
+            </div>
+            <div class="card-side">
+              <span class="badge badge-neutral">CZ</span>
+              <span class="badge badge-status-monitoring_planned">Monitoring, planned</span>
+            </div>
+          </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-high">Priority: high</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">OP JAK</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Monitoring, planned</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value">N/A</dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Institutional route</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">research infrastructure, equipment</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">OP JAK</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">https://opjak.cz/</a></dd>
+            </div>
+          </dl>
+          <div class="card-copy">
+            <p class="summary">Planned call for development of research infrastructures and e-infrastructures.</p>
+            <p class="insight"><strong>Reality check:</strong> Relevant at institutional level, but this remains a planned line that needs internal prioritization and later call confirmation.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">research infrastructure</span><span class="tag">equipment</span>
+          </div>
+        </article>
+<!-- STATIC_ALL_CALLS_END -->
       </section>
     </main>
   </div>
 
+  <script type="application/ld+json">
+<!-- STATIC_JSONLD_START -->
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "UJF Open Calls",
+  "numberOfItems": 12,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Thing",
+        "identifier": "gacr-expro",
+        "name": "GA CR EXPRO",
+        "program": "GA CR",
+        "status": "closing_soon",
+        "opens_on": "2026-02-10",
+        "deadline": "2026-04-20",
+        "domains": [
+          "basic research",
+          "frontier research"
+        ],
+        "summary": "High-risk, high-gain projects for experienced researchers.",
+        "url": "https://gacr.cz/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Thing",
+        "identifier": "gacr-junior-star",
+        "name": "GA CR Junior Star",
+        "program": "GA CR",
+        "status": "closing_soon",
+        "opens_on": "2026-02-10",
+        "deadline": "2026-04-20",
+        "domains": [
+          "basic research",
+          "early career"
+        ],
+        "summary": "Funding for early-career researchers to build independent teams.",
+        "url": "https://gacr.cz/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Thing",
+        "identifier": "msca-postdoctoral-fellowships-2026",
+        "name": "MSCA Postdoctoral Fellowships 2026",
+        "program": "MSCA",
+        "status": "open_now",
+        "opens_on": "2026-04-09",
+        "deadline": "2026-09-09",
+        "domains": [
+          "nuclear physics",
+          "particle physics",
+          "detectors",
+          "medical physics",
+          "mobility",
+          "HPC",
+          "simulation",
+          "AI in physics"
+        ],
+        "summary": "Main newly open Horizon Europe postdoctoral mobility window with bottom-up topic selection and very high relevance for UJF.",
+        "url": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Thing",
+        "identifier": "euratom-research-and-training-actions",
+        "name": "Euratom Research and Training Programme",
+        "program": "Euratom",
+        "status": "open_rolling",
+        "opens_on": null,
+        "deadline": null,
+        "domains": [
+          "nuclear safety",
+          "radiation protection",
+          "fusion",
+          "fission",
+          "waste management",
+          "detectors",
+          "medical physics",
+          "materials"
+        ],
+        "summary": "Core EU nuclear funding stream spanning radiation protection, safety, fusion, fission, waste, and adjacent applied research themes.",
+        "url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/euratom-research-and-training-programme_en"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Thing",
+        "identifier": "tacr-sigma-applied-research-for-public-needs",
+        "name": "TA CR SIGMA - Applied Research for Public Needs",
+        "program": "TA CR",
+        "status": "open_partner_required",
+        "opens_on": null,
+        "deadline": "2026-05-22",
+        "domains": [
+          "applied research",
+          "instrumentation",
+          "public sector cooperation"
+        ],
+        "summary": "National applied research support for consortia solving practical public-sector or societal needs with measurable outputs.",
+        "url": "https://www.tacr.cz/en/programmes/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Thing",
+        "identifier": "gacr-croatia-czech-projects-2027",
+        "name": "GA CR - Croatia-Czech Projects 2027",
+        "program": "GA CR",
+        "status": "open_bilateral_partner_required",
+        "opens_on": "2026-02-10",
+        "deadline": "2026-05-04",
+        "domains": [
+          "basic research",
+          "international collaboration"
+        ],
+        "summary": "Bilateral GA CR and HRZZ call for Croatia-Czech basic research projects under the Lead Agency scheme.",
+        "url": "https://gacr.cz/vyzva-pro-podavani-chorvatsko-ceskych-projektu-2027/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Thing",
+        "identifier": "m-era-net-call-2026",
+        "name": "M-ERA.NET Call 2026",
+        "program": "M-ERA.NET",
+        "status": "open_consortium_gated",
+        "opens_on": "2026-03-04",
+        "deadline": "2026-05-12",
+        "domains": [
+          "materials",
+          "detectors",
+          "applied research"
+        ],
+        "summary": "Materials research and innovation funding in international consortia with potential detector and radiation-material overlap.",
+        "url": "https://www.m-era.net/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Thing",
+        "identifier": "horizon-europe-research-infrastructures-calls",
+        "name": "Horizon Europe Research Infrastructures 2026",
+        "program": "Horizon Europe",
+        "status": "open_consortium_gated",
+        "opens_on": null,
+        "deadline": "2026-06-16",
+        "domains": [
+          "research infrastructure",
+          "large facilities",
+          "data services",
+          "detectors",
+          "HPC",
+          "AI"
+        ],
+        "summary": "Active INFRA calls for access, upgrades, and service development across major research infrastructures and data ecosystems.",
+        "url": "https://research-and-innovation.ec.europa.eu/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Thing",
+        "identifier": "erc-advanced-grant",
+        "name": "ERC Advanced Grant",
+        "program": "European Research Council",
+        "status": "open_excellence_gated",
+        "opens_on": null,
+        "deadline": "2026-08-27",
+        "domains": [
+          "frontier research",
+          "theory",
+          "large research agenda"
+        ],
+        "summary": "Frontier-research funding for established principal investigators with a strong track record and ambitious scientific vision.",
+        "url": "https://erc.europa.eu/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Thing",
+        "identifier": "gacr-postdoc-individual-fellowship-2027",
+        "name": "GA CR Postdoc Individual Fellowship",
+        "program": "GA CR",
+        "status": "monitoring_expected",
+        "opens_on": "2026-02-10",
+        "deadline": null,
+        "domains": [
+          "basic research",
+          "mobility"
+        ],
+        "summary": "Individual postdoctoral funding scheme in the Czech Republic.",
+        "url": "https://gacr.cz/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Thing",
+        "identifier": "op-jak-top-research",
+        "name": "OP JAK - Top Research",
+        "program": "OP JAK",
+        "status": "monitoring_planned",
+        "opens_on": null,
+        "deadline": null,
+        "domains": [
+          "research excellence",
+          "institutional development",
+          "equipment"
+        ],
+        "summary": "Large-scale Czech calls aimed at research excellence, capacity building, and development of major scientific teams and infrastructure.",
+        "url": "https://opjak.cz/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Thing",
+        "identifier": "op-jak-vyzkumne-infrastruktury-ii",
+        "name": "OP JAK - Vyzkumne infrastruktury II",
+        "program": "OP JAK",
+        "status": "monitoring_planned",
+        "opens_on": null,
+        "deadline": null,
+        "domains": [
+          "research infrastructure",
+          "equipment"
+        ],
+        "summary": "Planned call for development of research infrastructures and e-infrastructures.",
+        "url": "https://opjak.cz/"
+      }
+    }
+  ]
+}
+<!-- STATIC_JSONLD_END -->
+  </script>
   <script src="script.js" defer></script>
 </body>
 </html>

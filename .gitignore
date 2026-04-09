@@ -1,0 +1,7 @@
+call_evaluation_rules.local.md
+__pycache__/
+# Local agent workspace artifacts
+.codex/
+.agents/
+.agent/
+docs/
