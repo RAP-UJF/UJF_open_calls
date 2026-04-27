@@ -2,8 +2,13 @@
 const loadingState = document.getElementById("loading-state");
 const heroLastUpdated = document.getElementById("hero-last-updated");
 const heroCallCount = document.getElementById("hero-call-count");
+const dataHealthWarning = document.getElementById("data-health-warning");
+const dashboardMetricElements = document.querySelectorAll("[data-dashboard-metric]");
+const callSearch = document.getElementById("call-search");
 const domainFilter = document.getElementById("domain-filter");
 const accessFilter = document.getElementById("access-filter");
+const statusFilter = document.getElementById("status-filter");
+const deadlineFilter = document.getElementById("deadline-filter");
 const DATA_URL = "data/calls.json";
 const CLOSING_SOON_DAYS = 42;
 const PARTNERSHIP_ACCESS_BARRIERS = new Set([
@@ -23,12 +28,42 @@ const STATUS_ORDER = {
   open_excellence_gated: 7,
   monitoring_expected: 8,
   monitoring_planned: 9,
-  monitoring: 10
+  monitoring: 10,
+  expired: 99
 };
+
+const STATUS_LABELS = {
+  closing_soon: "Closing soon",
+  open_now: "Open now",
+  open: "Open",
+  open_rolling: "Open, rolling",
+  open_partner_required: "Open, partner required",
+  open_bilateral_partner_required: "Open, bilateral partner required",
+  open_consortium_gated: "Open, consortium-gated",
+  open_excellence_gated: "Open, excellence-gated",
+  monitoring_expected: "Monitoring, expected",
+  monitoring_planned: "Monitoring, planned",
+  monitoring: "Monitoring",
+  expired: "Past deadline"
+};
+
+const ACTIVE_MANUAL_STATUSES = new Set([
+  "closing_soon",
+  "open_now",
+  "open",
+  "open_rolling",
+  "open_partner_required",
+  "open_bilateral_partner_required",
+  "open_consortium_gated",
+  "open_excellence_gated"
+]);
 
 let allCalls = [];
 let activeDomain = "all";
 let activeAccess = "all";
+let activeStatus = "all";
+let activeDeadline = "all";
+let activeSearch = "";
 
 loadCalls();
 
@@ -42,9 +77,14 @@ async function loadCalls() {
     const data = await response.json();
     allCalls = Array.isArray(data) ? data.slice().sort(compareCalls) : [];
 
+    syncRenderedCallStatuses(allCalls);
     updateHero(allCalls);
+    updateDataHealthWarning(allCalls);
     renderDomainFilters(allCalls);
     renderAccessFilters();
+    renderStatusFilters();
+    renderDeadlineFilters();
+    bindSearchInput();
     renderPage();
   } catch (error) {
     console.error("Failed to load funding calls:", error);
@@ -84,6 +124,8 @@ function updateHero(calls) {
     heroCallCount.textContent = `${calls.length} call${calls.length === 1 ? "" : "s"}`;
   }
 
+  updatePortfolioDashboard(calls);
+
   if (!heroLastUpdated) {
     return;
   }
@@ -97,12 +139,62 @@ function updateHero(calls) {
   heroLastUpdated.textContent = latestUpdate ? formatDisplayDate(latestUpdate) : "Unknown";
 }
 
+function updatePortfolioDashboard(calls) {
+  if (!dashboardMetricElements.length) {
+    return;
+  }
+
+  const metrics = calculatePortfolioMetrics(calls);
+  dashboardMetricElements.forEach((element) => {
+    const metricName = element.dataset.dashboardMetric;
+    if (metricName && metrics[metricName] !== undefined) {
+      element.textContent = String(metrics[metricName]);
+    }
+  });
+}
+
+function calculatePortfolioMetrics(calls) {
+  const metrics = {
+    tracked: calls.length,
+    active: 0,
+    monitoring: 0,
+    expired: 0,
+    next30: 0
+  };
+  const today = startOfDay(new Date());
+  const next30 = new Date(today);
+  next30.setDate(today.getDate() + 30);
+
+  calls.forEach((call) => {
+    const status = getEffectiveStatus(call);
+    if (status === "expired") {
+      metrics.expired += 1;
+    } else if (ACTIVE_MANUAL_STATUSES.has(status)) {
+      metrics.active += 1;
+    } else if (status === "monitoring" || status === "monitoring_expected" || status === "monitoring_planned") {
+      metrics.monitoring += 1;
+    }
+
+    const deadlineDate = parseDateOnly(call && call.deadline);
+    if (
+      deadlineDate &&
+      status !== "expired" &&
+      deadlineDate.getTime() >= today.getTime() &&
+      deadlineDate.getTime() <= next30.getTime()
+    ) {
+      metrics.next30 += 1;
+    }
+  });
+
+  return metrics;
+}
+
 function renderPage() {
   const domainFilterSource = filterCalls(allCalls, "all", activeAccess);
   syncActiveDomain(domainFilterSource);
   renderDomainFilters(domainFilterSource);
 
-  const visibleCount = applyFiltersToDom(activeDomain, activeAccess);
+  const visibleCount = applyFiltersToDom();
   updateLoadingState(visibleCount, allCalls.length);
 }
 
@@ -199,6 +291,65 @@ function renderAccessFilters() {
   });
 }
 
+function renderStatusFilters() {
+  if (!statusFilter) {
+    return;
+  }
+
+  const items = [
+    { value: "all", label: "All status" },
+    { value: "active", label: "Open / active" },
+    { value: "monitoring", label: "Monitoring / planned" },
+    { value: "expired", label: "Past deadline" }
+  ];
+
+  statusFilter.innerHTML = items.map((item) => createStatusFilterButtonMarkup(item)).join("");
+
+  statusFilter.querySelectorAll("button[data-status-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeStatus = button.dataset.statusFilter || "all";
+      renderStatusFilters();
+      renderPage();
+    });
+  });
+}
+
+function renderDeadlineFilters() {
+  if (!deadlineFilter) {
+    return;
+  }
+
+  const items = [
+    { value: "all", label: "All deadlines" },
+    { value: "next_30", label: "Next 30 days" },
+    { value: "next_90", label: "Next 90 days" },
+    { value: "none", label: "No deadline" },
+    { value: "past", label: "Past deadline" }
+  ];
+
+  deadlineFilter.innerHTML = items.map((item) => createDeadlineFilterButtonMarkup(item)).join("");
+
+  deadlineFilter.querySelectorAll("button[data-deadline-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeDeadline = button.dataset.deadlineFilter || "all";
+      renderDeadlineFilters();
+      renderPage();
+    });
+  });
+}
+
+function bindSearchInput() {
+  if (!callSearch || callSearch.dataset.bound === "true") {
+    return;
+  }
+
+  callSearch.dataset.bound = "true";
+  callSearch.addEventListener("input", () => {
+    activeSearch = normalizeSearchText(callSearch.value);
+    renderPage();
+  });
+}
+
 function createFilterButtonMarkup(item) {
   const isActive = item.value === activeDomain;
   return `
@@ -227,8 +378,42 @@ function createAccessFilterButtonMarkup(item) {
   `;
 }
 
+function createStatusFilterButtonMarkup(item) {
+  const isActive = item.value === activeStatus;
+  return `
+    <button
+      type="button"
+      class="filter-chip${isActive ? " is-active" : ""}"
+      data-status-filter="${escapeAttribute(item.value)}"
+      aria-pressed="${isActive ? "true" : "false"}"
+    >
+      ${escapeHtml(item.label)}
+    </button>
+  `;
+}
+
+function createDeadlineFilterButtonMarkup(item) {
+  const isActive = item.value === activeDeadline;
+  return `
+    <button
+      type="button"
+      class="filter-chip${isActive ? " is-active" : ""}"
+      data-deadline-filter="${escapeAttribute(item.value)}"
+      aria-pressed="${isActive ? "true" : "false"}"
+    >
+      ${escapeHtml(item.label)}
+    </button>
+  `;
+}
+
 function updateLoadingState(visibleCount, totalCount) {
-  if (activeDomain === "all" && activeAccess === "all") {
+  if (
+    activeDomain === "all" &&
+    activeAccess === "all" &&
+    activeStatus === "all" &&
+    activeDeadline === "all" &&
+    activeSearch === ""
+  ) {
     loadingState.textContent = `${totalCount} call${totalCount === 1 ? "" : "s"} currently listed.`;
     return;
   }
@@ -237,12 +422,20 @@ function updateLoadingState(visibleCount, totalCount) {
 }
 
 function compareCalls(a, b) {
-  const statusDelta = getStatusRank(resolveStatus(a)) - getStatusRank(resolveStatus(b));
+  const statusDelta = getStatusRank(getEffectiveStatus(a)) - getStatusRank(getEffectiveStatus(b));
   if (statusDelta !== 0) {
     return statusDelta;
   }
 
   return getDeadlineRank(a && a.deadline) - getDeadlineRank(b && b.deadline);
+}
+
+function getEffectiveStatus(call) {
+  if (isPastDeadline(call && call.deadline)) {
+    return "expired";
+  }
+
+  return resolveStatus(call);
 }
 
 function resolveStatus(call) {
@@ -264,7 +457,7 @@ function getDerivedStatus(deadline) {
   const dayDelta = Math.ceil((deadlineDate.getTime() - today.getTime()) / 86400000);
 
   if (dayDelta < 0) {
-    return "monitoring";
+    return "expired";
   }
 
   if (dayDelta <= CLOSING_SOON_DAYS) {
@@ -281,6 +474,86 @@ function getStatusRank(status) {
 function getDeadlineRank(deadline) {
   const deadlineDate = parseDateOnly(deadline);
   return deadlineDate ? deadlineDate.getTime() : Number.MAX_SAFE_INTEGER;
+}
+
+function isPastDeadline(deadline) {
+  const deadlineDate = parseDateOnly(deadline);
+  if (!deadlineDate) {
+    return false;
+  }
+
+  return deadlineDate.getTime() < startOfDay(new Date()).getTime();
+}
+
+function updateDataHealthWarning(calls) {
+  const overrideCount = countExpiredStatusOverrides(calls);
+  const message = overrideCount > 0
+    ? "Some calls have deadlines in the past and were marked as expired automatically."
+    : "";
+
+  if (dataHealthWarning) {
+    dataHealthWarning.textContent = message;
+    dataHealthWarning.hidden = overrideCount === 0;
+  }
+
+  if (overrideCount > 0) {
+    console.warn(message, { overrideCount });
+  }
+}
+
+function countExpiredStatusOverrides(calls) {
+  return calls.filter((call) => {
+    const manualStatus = toText(call && call.status, "").toLowerCase();
+    return ACTIVE_MANUAL_STATUSES.has(manualStatus) && getEffectiveStatus(call) === "expired";
+  }).length;
+}
+
+function syncRenderedCallStatuses(calls) {
+  if (!callsContainer) {
+    return;
+  }
+
+  const callsById = new Map(
+    calls
+      .filter((call) => call && typeof call.id === "string")
+      .map((call) => [call.id, call])
+  );
+
+  const articles = Array.from(callsContainer.querySelectorAll("article[data-call-id]"));
+  articles.forEach((article) => {
+    const call = callsById.get(article.dataset.callId || "");
+    if (!call) {
+      return;
+    }
+
+    article.dataset.deadline = toText(call.deadline, "");
+    applyEffectiveStatusToArticle(article, getEffectiveStatus(call));
+  });
+
+  articles
+    .sort((a, b) => compareCalls(callsById.get(a.dataset.callId || ""), callsById.get(b.dataset.callId || "")))
+    .forEach((article) => callsContainer.appendChild(article));
+}
+
+function applyEffectiveStatusToArticle(article, status) {
+  article.dataset.status = status;
+
+  const statusLabel = STATUS_LABELS[status] || formatLabel(status, "Unknown");
+  const statusBadge = article.querySelector(".card-side .badge:not(.badge-neutral)");
+  if (statusBadge) {
+    Array.from(statusBadge.classList)
+      .filter((className) => className.startsWith("badge-status-"))
+      .forEach((className) => statusBadge.classList.remove(className));
+    statusBadge.classList.add(`badge-status-${status}`);
+    statusBadge.textContent = statusLabel;
+  }
+
+  const statusFact = article.querySelector(".fact-status .fact-value");
+  if (statusFact) {
+    statusFact.textContent = statusLabel;
+  }
+
+  article.dataset.search = buildArticleSearchText(article);
 }
 
 function parseDateOnly(value) {
@@ -314,7 +587,7 @@ function startOfDay(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
-function applyFiltersToDom(domain, access) {
+function applyFiltersToDom() {
   if (!callsContainer) {
     return 0;
   }
@@ -329,9 +602,15 @@ function applyFiltersToDom(domain, access) {
   articles.forEach((article) => {
     const articleDomains = parseArticleDomains(article.dataset.domains || "");
     const accessBarrier = article.dataset.accessBarrier || "";
-    const matchesDomain = domain === "all" || articleDomains.includes(domain);
-    const matchesAccess = matchesAccessBarrier(accessBarrier, access);
-    const isVisible = matchesDomain && matchesAccess;
+    const status = article.dataset.status || "";
+    const deadline = article.dataset.deadline || "";
+    const searchText = article.dataset.search || buildArticleSearchText(article);
+    const matchesDomain = activeDomain === "all" || articleDomains.includes(activeDomain);
+    const matchesAccess = matchesAccessBarrier(accessBarrier, activeAccess);
+    const matchesStatusValue = matchesStatusFilter(status, activeStatus);
+    const matchesDeadlineValue = matchesDeadlineFilter(deadline, activeDeadline);
+    const matchesSearchValue = !activeSearch || searchText.includes(activeSearch);
+    const isVisible = matchesDomain && matchesAccess && matchesStatusValue && matchesDeadlineValue && matchesSearchValue;
     article.hidden = !isVisible;
     if (isVisible) {
       visibleCount += 1;
@@ -347,7 +626,7 @@ function applyFiltersToDom(domain, access) {
       emptyState.className = "empty-state";
       emptyState.innerHTML = `
         <h3>No matching calls</h3>
-        <p>Try a different research tag or return to all domains.</p>
+        <p>Try a different search term or loosen one of the filters.</p>
       `;
       callsContainer.appendChild(emptyState);
     }
@@ -360,6 +639,76 @@ function applyFiltersToDom(domain, access) {
   }
 
   return visibleCount;
+}
+
+function matchesStatusFilter(status, filter) {
+  if (filter === "all") {
+    return true;
+  }
+
+  if (filter === "expired") {
+    return status === "expired";
+  }
+
+  if (filter === "monitoring") {
+    return status === "monitoring" || status === "monitoring_expected" || status === "monitoring_planned";
+  }
+
+  if (filter === "active") {
+    return ACTIVE_MANUAL_STATUSES.has(status) && status !== "expired";
+  }
+
+  return true;
+}
+
+function matchesDeadlineFilter(deadline, filter) {
+  const deadlineDate = parseDateOnly(deadline);
+  if (filter === "all") {
+    return true;
+  }
+
+  if (filter === "none") {
+    return !deadlineDate;
+  }
+
+  if (!deadlineDate) {
+    return false;
+  }
+
+  const today = startOfDay(new Date());
+  const dayDelta = Math.ceil((deadlineDate.getTime() - today.getTime()) / 86400000);
+
+  if (filter === "past") {
+    return dayDelta < 0;
+  }
+
+  if (dayDelta < 0) {
+    return false;
+  }
+
+  if (filter === "next_30") {
+    return dayDelta <= 30;
+  }
+
+  if (filter === "next_90") {
+    return dayDelta <= 90;
+  }
+
+  return true;
+}
+
+function buildArticleSearchText(article) {
+  return normalizeSearchText([
+    article.textContent || "",
+    article.dataset.status || "",
+    article.dataset.domains || "",
+    article.dataset.scope || "",
+    article.dataset.deadline || ""
+  ].join(" "));
+}
+
+function normalizeSearchText(value) {
+  return String(value || "").toLocaleLowerCase().replace(/\s+/g, " ").trim();
 }
 
 function parseArticleDomains(value) {
@@ -401,6 +750,11 @@ function formatDisplayDate(value) {
     month: "short",
     year: "numeric"
   }).format(date);
+}
+
+function formatLabel(value, fallback) {
+  const text = toText(value, fallback);
+  return text ? text.replace(/_/g, " ") : fallback;
 }
 
 function escapeHtml(value) {

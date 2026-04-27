@@ -37,6 +37,31 @@
           </div>
 
         </div>
+        <section class="portfolio-dashboard" aria-label="Call portfolio summary">
+<!-- STATIC_PORTFOLIO_DASHBOARD_START -->
+          <div class="dashboard-card">
+            <span class="dashboard-label">Tracked</span>
+            <strong class="dashboard-value" data-dashboard-metric="tracked">15</strong>
+          </div>
+          <div class="dashboard-card">
+            <span class="dashboard-label">Open / active</span>
+            <strong class="dashboard-value" data-dashboard-metric="active">7</strong>
+          </div>
+          <div class="dashboard-card">
+            <span class="dashboard-label">Monitoring</span>
+            <strong class="dashboard-value" data-dashboard-metric="monitoring">4</strong>
+          </div>
+          <div class="dashboard-card">
+            <span class="dashboard-label">Past deadline</span>
+            <strong class="dashboard-value" data-dashboard-metric="expired">4</strong>
+          </div>
+          <div class="dashboard-card">
+            <span class="dashboard-label">Next 30 days</span>
+            <strong class="dashboard-value" data-dashboard-metric="next30">3</strong>
+          </div>
+<!-- STATIC_PORTFOLIO_DASHBOARD_END -->
+        </section>
+          <p id="data-health-warning" class="data-health-warning">Some calls have deadlines in the past and were marked as expired automatically.</p>
       </div>
 
       <div class="hero-visual">
@@ -48,6 +73,16 @@
 
     <main class="page-main">
       <section class="filter-slice" aria-label="Research tag filter">
+        <div class="filter-search">
+          <label class="filter-search-label" for="call-search">Search calls</label>
+          <input
+            id="call-search"
+            class="filter-search-input"
+            type="search"
+            autocomplete="off"
+            placeholder="Search by title, programme, status, domain, or notes"
+          >
+        </div>
         <div class="filter-head">
           <p class="section-kicker filter-label">Domains</p>
         </div>
@@ -56,6 +91,14 @@
           <p class="section-kicker filter-label">Access route</p>
         </div>
         <div id="access-filter" class="filter-tags" aria-live="polite"></div>
+        <div class="filter-head">
+          <p class="section-kicker filter-label">Status</p>
+        </div>
+        <div id="status-filter" class="filter-tags" aria-live="polite"></div>
+        <div class="filter-head">
+          <p class="section-kicker filter-label">Deadline</p>
+        </div>
+        <div id="deadline-filter" class="filter-tags" aria-live="polite"></div>
       </section>
 
       <section class="content-head" aria-live="polite">
@@ -86,34 +129,6 @@
             </thead>
             <tbody>
 <!-- STATIC_MACHINE_SUMMARY_START -->
-              <tr>
-                <td>HORIZON-CL4-2026-01-MAT-PROD-04 Materials and Production Innovation</td>
-                <td>Closing soon</td>
-                <td>TBD</td>
-                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
-                <td><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04" target="_blank" rel="noreferrer noopener">EU Funding and Tenders Portal</a></td>
-              </tr>
-              <tr>
-                <td>GA CR EXPRO</td>
-                <td>Closing soon</td>
-                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
-                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
-                <td><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
-              </tr>
-              <tr>
-                <td>GA CR Junior Star</td>
-                <td>Closing soon</td>
-                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
-                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
-                <td><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
-              </tr>
-              <tr>
-                <td>HORIZON-CL4-2026-01-MAT-PROD-23 AI-Enabled Materials Discovery</td>
-                <td>Closing soon</td>
-                <td>TBD</td>
-                <td><time datetime="2026-04-21">21 Apr 2026</time></td>
-                <td><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23" target="_blank" rel="noreferrer noopener">EU Funding and Tenders Portal</a></td>
-              </tr>
               <tr>
                 <td>HORIZON-MSCA-2026-PF-01 Postdoctoral Fellowships</td>
                 <td>Open now</td>
@@ -191,6 +206,34 @@
                 <td>N/A</td>
                 <td><a href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">OP JAK</a></td>
               </tr>
+              <tr>
+                <td>HORIZON-CL4-2026-01-MAT-PROD-04 Materials and Production Innovation</td>
+                <td>Past deadline</td>
+                <td>TBD</td>
+                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
+                <td><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04" target="_blank" rel="noreferrer noopener">EU Funding and Tenders Portal</a></td>
+              </tr>
+              <tr>
+                <td>GA CR EXPRO</td>
+                <td>Past deadline</td>
+                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
+                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
+                <td><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
+              </tr>
+              <tr>
+                <td>GA CR Junior Star</td>
+                <td>Past deadline</td>
+                <td><time datetime="2026-02-10">10 Feb 2026</time></td>
+                <td><time datetime="2026-04-20">20 Apr 2026</time></td>
+                <td><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR</a></td>
+              </tr>
+              <tr>
+                <td>HORIZON-CL4-2026-01-MAT-PROD-23 AI-Enabled Materials Discovery</td>
+                <td>Past deadline</td>
+                <td>TBD</td>
+                <td><time datetime="2026-04-21">21 Apr 2026</time></td>
+                <td><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23" target="_blank" rel="noreferrer noopener">EU Funding and Tenders Portal</a></td>
+              </tr>
 <!-- STATIC_MACHINE_SUMMARY_END -->
             </tbody>
           </table>
@@ -199,295 +242,7 @@
 
       <section id="calls-container" class="cards-grid" aria-label="Funding calls">
 <!-- STATIC_ALL_CALLS_START -->
-        <article class="call-card" data-call-id="horizon-cl4-2026-01-mat-prod-04" data-status="closing_soon" data-scope="EU" data-priority="high" data-relevance="high" data-access-barrier="consortium_gated" data-domains="advanced materials|manufacturing|resource efficiency|detector mechanics|instrumentation">
-          <div class="card-top">
-            <div class="card-heading">
-              <h3>
-                <a class="call-title-link" href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04" target="_blank" rel="noreferrer noopener">HORIZON-CL4-2026-01-MAT-PROD-04 Materials and Production Innovation</a>
-              </h3>
-              <div class="program-line">Horizon Europe Cluster 4</div>
-            </div>
-            <div class="card-side">
-              <span class="badge badge-neutral">EU</span>
-              <span class="badge badge-status-closing_soon">Closing soon</span>
-            </div>
-          </div>
-          <div class="card-badges">
-            <span class="badge badge-priority-high">Priority: high</span>
-            <span class="badge badge-relevance-high">Relevance: high</span>
-          </div>
-          <dl class="card-facts">
-            <div class="fact fact-program">
-              <dt class="fact-label">Program</dt>
-              <dd class="fact-value">Horizon Europe Cluster 4</dd>
-            </div>
-            <div class="fact fact-scope">
-              <dt class="fact-label">Scope</dt>
-              <dd class="fact-value">EU</dd>
-            </div>
-            <div class="fact fact-status">
-              <dt class="fact-label">Status</dt>
-              <dd class="fact-value">Closing soon</dd>
-            </div>
-            <div class="fact fact-opens">
-              <dt class="fact-label">Opens</dt>
-              <dd class="fact-value">TBD</dd>
-            </div>
-            <div class="fact fact-deadline">
-              <dt class="fact-label">Deadline</dt>
-              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
-            </div>
-            <div class="fact fact-relevance">
-              <dt class="fact-label">Relevance</dt>
-              <dd class="fact-value">high</dd>
-            </div>
-            <div class="fact fact-priority">
-              <dt class="fact-label">Priority</dt>
-              <dd class="fact-value">high</dd>
-            </div>
-            <div class="fact fact-access">
-              <dt class="fact-label">Access</dt>
-              <dd class="fact-value">Consortium-gated</dd>
-            </div>
-            <div class="fact fact-domains">
-              <dt class="fact-label">Domains</dt>
-              <dd class="fact-value">advanced materials, manufacturing, resource efficiency, detector mechanics, instrumentation</dd>
-            </div>
-            <div class="fact fact-source-label">
-              <dt class="fact-label">Source label</dt>
-              <dd class="fact-value">EU Funding and Tenders Portal</dd>
-            </div>
-            <div class="fact fact-source-url">
-              <dt class="fact-label">Source URL</dt>
-              <dd class="fact-value"><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04" target="_blank" rel="noreferrer noopener">https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04</a></dd>
-            </div>
-          </dl>
-          <div class="card-copy">
-            <p class="summary">Cluster 4 topic focused on next-generation manufacturing technologies and resource-efficient production for advanced materials and components.</p>
-            <p class="insight"><strong>Reality check:</strong> High-value route for detector mechanics and bespoke assemblies, but timing is critical and consortium maturity is a hard gate.</p>
-            
-          </div>
-          <div class="card-tags" aria-label="Domains">
-            <span class="tag">advanced materials</span><span class="tag">manufacturing</span><span class="tag">resource efficiency</span><span class="tag">detector mechanics</span><span class="tag">instrumentation</span>
-          </div>
-        </article>
-        <article class="call-card" data-call-id="gacr-expro" data-status="closing_soon" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="excellence_gated" data-domains="basic research|frontier research">
-          <div class="card-top">
-            <div class="card-heading">
-              <h3>
-                <a class="call-title-link" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR EXPRO</a>
-              </h3>
-              <div class="program-line">GA CR</div>
-            </div>
-            <div class="card-side">
-              <span class="badge badge-neutral">CZ</span>
-              <span class="badge badge-status-closing_soon">Closing soon</span>
-            </div>
-          </div>
-          <div class="card-badges">
-            <span class="badge badge-priority-medium">Priority: medium</span>
-            <span class="badge badge-relevance-high">Relevance: high</span>
-          </div>
-          <dl class="card-facts">
-            <div class="fact fact-program">
-              <dt class="fact-label">Program</dt>
-              <dd class="fact-value">GA CR</dd>
-            </div>
-            <div class="fact fact-scope">
-              <dt class="fact-label">Scope</dt>
-              <dd class="fact-value">CZ</dd>
-            </div>
-            <div class="fact fact-status">
-              <dt class="fact-label">Status</dt>
-              <dd class="fact-value">Closing soon</dd>
-            </div>
-            <div class="fact fact-opens">
-              <dt class="fact-label">Opens</dt>
-              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
-            </div>
-            <div class="fact fact-deadline">
-              <dt class="fact-label">Deadline</dt>
-              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
-            </div>
-            <div class="fact fact-relevance">
-              <dt class="fact-label">Relevance</dt>
-              <dd class="fact-value">high</dd>
-            </div>
-            <div class="fact fact-priority">
-              <dt class="fact-label">Priority</dt>
-              <dd class="fact-value">medium</dd>
-            </div>
-            <div class="fact fact-access">
-              <dt class="fact-label">Access</dt>
-              <dd class="fact-value">Excellence-gated</dd>
-            </div>
-            <div class="fact fact-domains">
-              <dt class="fact-label">Domains</dt>
-              <dd class="fact-value">basic research, frontier research</dd>
-            </div>
-            <div class="fact fact-source-label">
-              <dt class="fact-label">Source label</dt>
-              <dd class="fact-value">GA CR</dd>
-            </div>
-            <div class="fact fact-source-url">
-              <dt class="fact-label">Source URL</dt>
-              <dd class="fact-value"><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">https://gacr.cz/</a></dd>
-            </div>
-          </dl>
-          <div class="card-copy">
-            <p class="summary">High-risk, high-gain projects for experienced researchers.</p>
-            <p class="insight"><strong>Reality check:</strong> Technically still open, but the window is short and realistic only for top PIs with a strong publication record and near-ready concept.</p>
-            
-          </div>
-          <div class="card-tags" aria-label="Domains">
-            <span class="tag">basic research</span><span class="tag">frontier research</span>
-          </div>
-        </article>
-        <article class="call-card" data-call-id="gacr-junior-star" data-status="closing_soon" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="individual_entry" data-domains="basic research|early career">
-          <div class="card-top">
-            <div class="card-heading">
-              <h3>
-                <a class="call-title-link" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR Junior Star</a>
-              </h3>
-              <div class="program-line">GA CR</div>
-            </div>
-            <div class="card-side">
-              <span class="badge badge-neutral">CZ</span>
-              <span class="badge badge-status-closing_soon">Closing soon</span>
-            </div>
-          </div>
-          <div class="card-badges">
-            <span class="badge badge-priority-medium">Priority: medium</span>
-            <span class="badge badge-relevance-high">Relevance: high</span>
-          </div>
-          <dl class="card-facts">
-            <div class="fact fact-program">
-              <dt class="fact-label">Program</dt>
-              <dd class="fact-value">GA CR</dd>
-            </div>
-            <div class="fact fact-scope">
-              <dt class="fact-label">Scope</dt>
-              <dd class="fact-value">CZ</dd>
-            </div>
-            <div class="fact fact-status">
-              <dt class="fact-label">Status</dt>
-              <dd class="fact-value">Closing soon</dd>
-            </div>
-            <div class="fact fact-opens">
-              <dt class="fact-label">Opens</dt>
-              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
-            </div>
-            <div class="fact fact-deadline">
-              <dt class="fact-label">Deadline</dt>
-              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
-            </div>
-            <div class="fact fact-relevance">
-              <dt class="fact-label">Relevance</dt>
-              <dd class="fact-value">high</dd>
-            </div>
-            <div class="fact fact-priority">
-              <dt class="fact-label">Priority</dt>
-              <dd class="fact-value">medium</dd>
-            </div>
-            <div class="fact fact-access">
-              <dt class="fact-label">Access</dt>
-              <dd class="fact-value">Individual entry</dd>
-            </div>
-            <div class="fact fact-domains">
-              <dt class="fact-label">Domains</dt>
-              <dd class="fact-value">basic research, early career</dd>
-            </div>
-            <div class="fact fact-source-label">
-              <dt class="fact-label">Source label</dt>
-              <dd class="fact-value">GA CR</dd>
-            </div>
-            <div class="fact fact-source-url">
-              <dt class="fact-label">Source URL</dt>
-              <dd class="fact-value"><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">https://gacr.cz/</a></dd>
-            </div>
-          </dl>
-          <div class="card-copy">
-            <p class="summary">Funding for early-career researchers to build independent teams.</p>
-            <p class="insight"><strong>Reality check:</strong> Technically still open, but the remaining window is short and the call is realistic only for junior researchers with clearly demonstrated independence.</p>
-            
-          </div>
-          <div class="card-tags" aria-label="Domains">
-            <span class="tag">basic research</span><span class="tag">early career</span>
-          </div>
-        </article>
-        <article class="call-card" data-call-id="horizon-cl4-2026-01-mat-prod-23" data-status="closing_soon" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="consortium_gated" data-domains="AI for materials|materials discovery|scintillators|semiconductor sensors|modelling workflows|data-driven optimization">
-          <div class="card-top">
-            <div class="card-heading">
-              <h3>
-                <a class="call-title-link" href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23" target="_blank" rel="noreferrer noopener">HORIZON-CL4-2026-01-MAT-PROD-23 AI-Enabled Materials Discovery</a>
-              </h3>
-              <div class="program-line">Horizon Europe Cluster 4</div>
-            </div>
-            <div class="card-side">
-              <span class="badge badge-neutral">EU</span>
-              <span class="badge badge-status-closing_soon">Closing soon</span>
-            </div>
-          </div>
-          <div class="card-badges">
-            <span class="badge badge-priority-high">Priority: high</span>
-            <span class="badge badge-relevance-very_high">Relevance: very high</span>
-          </div>
-          <dl class="card-facts">
-            <div class="fact fact-program">
-              <dt class="fact-label">Program</dt>
-              <dd class="fact-value">Horizon Europe Cluster 4</dd>
-            </div>
-            <div class="fact fact-scope">
-              <dt class="fact-label">Scope</dt>
-              <dd class="fact-value">EU</dd>
-            </div>
-            <div class="fact fact-status">
-              <dt class="fact-label">Status</dt>
-              <dd class="fact-value">Closing soon</dd>
-            </div>
-            <div class="fact fact-opens">
-              <dt class="fact-label">Opens</dt>
-              <dd class="fact-value">TBD</dd>
-            </div>
-            <div class="fact fact-deadline">
-              <dt class="fact-label">Deadline</dt>
-              <dd class="fact-value"><time datetime="2026-04-21">21 Apr 2026</time></dd>
-            </div>
-            <div class="fact fact-relevance">
-              <dt class="fact-label">Relevance</dt>
-              <dd class="fact-value">very high</dd>
-            </div>
-            <div class="fact fact-priority">
-              <dt class="fact-label">Priority</dt>
-              <dd class="fact-value">high</dd>
-            </div>
-            <div class="fact fact-access">
-              <dt class="fact-label">Access</dt>
-              <dd class="fact-value">Consortium-gated</dd>
-            </div>
-            <div class="fact fact-domains">
-              <dt class="fact-label">Domains</dt>
-              <dd class="fact-value">AI for materials, materials discovery, scintillators, semiconductor sensors, modelling workflows, data-driven optimization</dd>
-            </div>
-            <div class="fact fact-source-label">
-              <dt class="fact-label">Source label</dt>
-              <dd class="fact-value">EU Funding and Tenders Portal</dd>
-            </div>
-            <div class="fact fact-source-url">
-              <dt class="fact-label">Source URL</dt>
-              <dd class="fact-value"><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23" target="_blank" rel="noreferrer noopener">https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23</a></dd>
-            </div>
-          </dl>
-          <div class="card-copy">
-            <p class="summary">Cluster 4 topic accelerating advanced materials and chemical development through AI-enabled discovery and digital modelling workflows.</p>
-            <p class="insight"><strong>Reality check:</strong> Very strong strategic fit for data-driven detector material R&amp;D, with clear value if UJF can anchor simulation and validation contributions.</p>
-            
-          </div>
-          <div class="card-tags" aria-label="Domains">
-            <span class="tag">AI for materials</span><span class="tag">materials discovery</span><span class="tag">scintillators</span><span class="tag">semiconductor sensors</span><span class="tag">modelling workflows</span><span class="tag">data-driven optimization</span>
-          </div>
-        </article>
-        <article class="call-card" data-call-id="msca-postdoctoral-fellowships-2026" data-status="open_now" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="individual_entry" data-domains="nuclear physics|particle physics|detectors|medical physics|mobility|HPC|simulation|AI in physics">
+        <article class="call-card" data-call-id="msca-postdoctoral-fellowships-2026" data-status="open_now" data-manual-status="open_now" data-deadline="2026-09-09" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="individual_entry" data-domains="nuclear physics|particle physics|detectors|medical physics|mobility|HPC|simulation|AI in physics">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -503,6 +258,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-high">Priority: high</span>
             <span class="badge badge-relevance-very_high">Relevance: very high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-09-09">09 Sep 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Individual entry</span>
+            </div>
+            <a class="source-cta" href="https://ec.europa.eu/info/funding-tenders/opportunities/calls-for-proposals?callIdentifier=HORIZON-MSCA-2026-PF-01" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -553,13 +319,13 @@
           <div class="card-copy">
             <p class="summary">MSCA PF 2026 call supporting researcher mobility, advanced skills, and postdoctoral projects with bottom-up topic selection.</p>
             <p class="insight"><strong>Reality check:</strong> High-fit route for UJF talent strategy, but outcomes depend on strong candidate-host pairing, mobility eligibility, and early proposal shaping.</p>
-            <p class="action-note"><strong>Action:</strong> Highest-priority active window for immediate candidate scouting and proposal shaping.</p>
+            <p class="action-note"><strong>Next action:</strong> Highest-priority active window for immediate candidate scouting and proposal shaping.</p>
           </div>
           <div class="card-tags" aria-label="Domains">
             <span class="tag">nuclear physics</span><span class="tag">particle physics</span><span class="tag">detectors</span><span class="tag">medical physics</span><span class="tag">mobility</span><span class="tag">HPC</span><span class="tag">simulation</span><span class="tag">AI in physics</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="tacr-sigma-applied-research-for-public-needs" data-status="open_partner_required" data-scope="CZ" data-priority="medium" data-relevance="medium" data-access-barrier="partner_required" data-domains="applied research|instrumentation|public sector cooperation">
+        <article class="call-card" data-call-id="tacr-sigma-applied-research-for-public-needs" data-status="open_partner_required" data-manual-status="open_partner_required" data-deadline="2026-05-22" data-scope="CZ" data-priority="medium" data-relevance="medium" data-access-barrier="partner_required" data-domains="applied research|instrumentation|public sector cooperation">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -575,6 +341,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-medium">Priority: medium</span>
             <span class="badge badge-relevance-medium">Relevance: medium</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-05-22">22 May 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Partner required</span>
+            </div>
+            <a class="source-cta" href="https://www.tacr.cz/en/programmes/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -631,7 +408,7 @@
             <span class="tag">applied research</span><span class="tag">instrumentation</span><span class="tag">public sector cooperation</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="gacr-croatia-czech-projects-2027" data-status="open_bilateral_partner_required" data-scope="CZ" data-priority="medium" data-relevance="medium" data-access-barrier="bilateral_partner_required" data-domains="basic research|international collaboration">
+        <article class="call-card" data-call-id="gacr-croatia-czech-projects-2027" data-status="open_bilateral_partner_required" data-manual-status="open_bilateral_partner_required" data-deadline="2026-05-04" data-scope="CZ" data-priority="medium" data-relevance="medium" data-access-barrier="bilateral_partner_required" data-domains="basic research|international collaboration">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -647,6 +424,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-medium">Priority: medium</span>
             <span class="badge badge-relevance-medium">Relevance: medium</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-05-04">04 May 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Bilateral partner required</span>
+            </div>
+            <a class="source-cta" href="https://gacr.cz/vyzva-pro-podavani-chorvatsko-ceskych-projektu-2027/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -703,7 +491,7 @@
             <span class="tag">basic research</span><span class="tag">international collaboration</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="m-era-net-call-2026" data-status="open_consortium_gated" data-scope="EU" data-priority="medium" data-relevance="medium" data-access-barrier="consortium_gated" data-domains="materials|detectors|applied research">
+        <article class="call-card" data-call-id="m-era-net-call-2026" data-status="open_consortium_gated" data-manual-status="open_consortium_gated" data-deadline="2026-05-12" data-scope="EU" data-priority="medium" data-relevance="medium" data-access-barrier="consortium_gated" data-domains="materials|detectors|applied research">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -719,6 +507,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-medium">Priority: medium</span>
             <span class="badge badge-relevance-medium">Relevance: medium</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-05-12">12 May 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Consortium-gated</span>
+            </div>
+            <a class="source-cta" href="https://www.m-era.net/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -775,7 +574,7 @@
             <span class="tag">materials</span><span class="tag">detectors</span><span class="tag">applied research</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="horizon-europe-research-infrastructures-calls" data-status="open_consortium_gated" data-scope="EU" data-priority="high" data-relevance="high" data-access-barrier="consortium_gated" data-domains="research infrastructure|large facilities|data services|detectors|HPC|AI">
+        <article class="call-card" data-call-id="horizon-europe-research-infrastructures-calls" data-status="open_consortium_gated" data-manual-status="open_consortium_gated" data-deadline="2026-06-16" data-scope="EU" data-priority="high" data-relevance="high" data-access-barrier="consortium_gated" data-domains="research infrastructure|large facilities|data services|detectors|HPC|AI">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -791,6 +590,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-high">Priority: high</span>
             <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-06-16">16 Jun 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Consortium-gated</span>
+            </div>
+            <a class="source-cta" href="https://research-and-innovation.ec.europa.eu/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -847,7 +657,7 @@
             <span class="tag">research infrastructure</span><span class="tag">large facilities</span><span class="tag">data services</span><span class="tag">detectors</span><span class="tag">HPC</span><span class="tag">AI</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="euratom-research-and-training-actions" data-status="open_consortium_gated" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="consortium_gated" data-domains="nuclear safety|radiation protection|SMR safety|advanced reactors|stable isotopes|detectors|medical physics|materials">
+        <article class="call-card" data-call-id="euratom-research-and-training-actions" data-status="open_consortium_gated" data-manual-status="open_consortium_gated" data-deadline="2026-09-15" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="consortium_gated" data-domains="nuclear safety|radiation protection|SMR safety|advanced reactors|stable isotopes|detectors|medical physics|materials">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -863,6 +673,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-high">Priority: high</span>
             <span class="badge badge-relevance-very_high">Relevance: very high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-09-15">15 Sep 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Consortium-gated</span>
+            </div>
+            <a class="source-cta" href="https://ec.europa.eu/info/funding-tenders/opportunities/calls-for-proposals?callIdentifier=HORIZON-EURATOM-2026-01" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -919,7 +740,7 @@
             <span class="tag">nuclear safety</span><span class="tag">radiation protection</span><span class="tag">SMR safety</span><span class="tag">advanced reactors</span><span class="tag">stable isotopes</span><span class="tag">detectors</span><span class="tag">medical physics</span><span class="tag">materials</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="erc-advanced-grant" data-status="open_excellence_gated" data-scope="EU" data-priority="medium" data-relevance="high" data-access-barrier="excellence_gated" data-domains="frontier research|theory|large research agenda">
+        <article class="call-card" data-call-id="erc-advanced-grant" data-status="open_excellence_gated" data-manual-status="open_excellence_gated" data-deadline="2026-08-27" data-scope="EU" data-priority="medium" data-relevance="high" data-access-barrier="excellence_gated" data-domains="frontier research|theory|large research agenda">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -935,6 +756,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-medium">Priority: medium</span>
             <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-08-27">27 Aug 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Excellence-gated</span>
+            </div>
+            <a class="source-cta" href="https://erc.europa.eu/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -991,7 +823,7 @@
             <span class="tag">frontier research</span><span class="tag">theory</span><span class="tag">large research agenda</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="digital-europe-ai-genai-medical-imaging-pilots-2026" data-status="monitoring_expected" data-scope="EU" data-priority="medium" data-relevance="medium" data-access-barrier="consortium_gated" data-domains="medical imaging|AI|GenAI|data pipelines|clinical validation">
+        <article class="call-card" data-call-id="digital-europe-ai-genai-medical-imaging-pilots-2026" data-status="monitoring_expected" data-manual-status="monitoring_expected" data-deadline="2026-10-01" data-scope="EU" data-priority="medium" data-relevance="medium" data-access-barrier="consortium_gated" data-domains="medical imaging|AI|GenAI|data pipelines|clinical validation">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -1007,6 +839,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-medium">Priority: medium</span>
             <span class="badge badge-relevance-medium">Relevance: medium</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-10-01">01 Oct 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Consortium-gated</span>
+            </div>
+            <a class="source-cta" href="https://digital-strategy.ec.europa.eu/en/activities/work-programmes-digital" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -1063,7 +906,7 @@
             <span class="tag">medical imaging</span><span class="tag">AI</span><span class="tag">GenAI</span><span class="tag">data pipelines</span><span class="tag">clinical validation</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="gacr-postdoc-individual-fellowship-2027" data-status="monitoring_expected" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="expected_call" data-domains="basic research|mobility">
+        <article class="call-card" data-call-id="gacr-postdoc-individual-fellowship-2027" data-status="monitoring_expected" data-manual-status="monitoring_expected" data-deadline="" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="expected_call" data-domains="basic research|mobility">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -1079,6 +922,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-medium">Priority: medium</span>
             <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value">No deadline</span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Expected call</span>
+            </div>
+            <a class="source-cta" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -1135,7 +989,7 @@
             <span class="tag">basic research</span><span class="tag">mobility</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="op-jak-top-research" data-status="monitoring_planned" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="institutional_only" data-domains="research excellence|institutional development|equipment">
+        <article class="call-card" data-call-id="op-jak-top-research" data-status="monitoring_planned" data-manual-status="monitoring_planned" data-deadline="" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="institutional_only" data-domains="research excellence|institutional development|equipment">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -1151,6 +1005,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-medium">Priority: medium</span>
             <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value">No deadline</span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Institutional route</span>
+            </div>
+            <a class="source-cta" href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -1207,7 +1072,7 @@
             <span class="tag">research excellence</span><span class="tag">institutional development</span><span class="tag">equipment</span>
           </div>
         </article>
-        <article class="call-card" data-call-id="op-jak-vyzkumne-infrastruktury-ii" data-status="monitoring_planned" data-scope="CZ" data-priority="high" data-relevance="high" data-access-barrier="institutional_only" data-domains="research infrastructure|equipment">
+        <article class="call-card" data-call-id="op-jak-vyzkumne-infrastruktury-ii" data-status="monitoring_planned" data-manual-status="monitoring_planned" data-deadline="" data-scope="CZ" data-priority="high" data-relevance="high" data-access-barrier="institutional_only" data-domains="research infrastructure|equipment">
           <div class="card-top">
             <div class="card-heading">
               <h3>
@@ -1223,6 +1088,17 @@
           <div class="card-badges">
             <span class="badge badge-priority-high">Priority: high</span>
             <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value">No deadline</span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Institutional route</span>
+            </div>
+            <a class="source-cta" href="https://opjak.cz/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
           </div>
           <dl class="card-facts">
             <div class="fact fact-program">
@@ -1279,6 +1155,338 @@
             <span class="tag">research infrastructure</span><span class="tag">equipment</span>
           </div>
         </article>
+        <article class="call-card" data-call-id="horizon-cl4-2026-01-mat-prod-04" data-status="expired" data-manual-status="closing_soon" data-deadline="2026-04-20" data-scope="EU" data-priority="high" data-relevance="high" data-access-barrier="consortium_gated" data-domains="advanced materials|manufacturing|resource efficiency|detector mechanics|instrumentation">
+          <div class="card-top">
+            <div class="card-heading">
+              <h3>
+                <a class="call-title-link" href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04" target="_blank" rel="noreferrer noopener">HORIZON-CL4-2026-01-MAT-PROD-04 Materials and Production Innovation</a>
+              </h3>
+              <div class="program-line">Horizon Europe Cluster 4</div>
+            </div>
+            <div class="card-side">
+              <span class="badge badge-neutral">EU</span>
+              <span class="badge badge-status-expired">Past deadline</span>
+            </div>
+          </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-high">Priority: high</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-04-20">20 Apr 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Consortium-gated</span>
+            </div>
+            <a class="source-cta" href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">Horizon Europe Cluster 4</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">EU</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Past deadline</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Consortium-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">advanced materials, manufacturing, resource efficiency, detector mechanics, instrumentation</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">EU Funding and Tenders Portal</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04" target="_blank" rel="noreferrer noopener">https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04</a></dd>
+            </div>
+          </dl>
+          <div class="card-copy">
+            <p class="summary">Cluster 4 topic focused on next-generation manufacturing technologies and resource-efficient production for advanced materials and components.</p>
+            <p class="insight"><strong>Reality check:</strong> High-value route for detector mechanics and bespoke assemblies, but timing is critical and consortium maturity is a hard gate.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">advanced materials</span><span class="tag">manufacturing</span><span class="tag">resource efficiency</span><span class="tag">detector mechanics</span><span class="tag">instrumentation</span>
+          </div>
+        </article>
+        <article class="call-card" data-call-id="gacr-expro" data-status="expired" data-manual-status="closing_soon" data-deadline="2026-04-20" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="excellence_gated" data-domains="basic research|frontier research">
+          <div class="card-top">
+            <div class="card-heading">
+              <h3>
+                <a class="call-title-link" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR EXPRO</a>
+              </h3>
+              <div class="program-line">GA CR</div>
+            </div>
+            <div class="card-side">
+              <span class="badge badge-neutral">CZ</span>
+              <span class="badge badge-status-expired">Past deadline</span>
+            </div>
+          </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-04-20">20 Apr 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Excellence-gated</span>
+            </div>
+            <a class="source-cta" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Past deadline</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Excellence-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">basic research, frontier research</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">https://gacr.cz/</a></dd>
+            </div>
+          </dl>
+          <div class="card-copy">
+            <p class="summary">High-risk, high-gain projects for experienced researchers.</p>
+            <p class="insight"><strong>Reality check:</strong> Technically still open, but the window is short and realistic only for top PIs with a strong publication record and near-ready concept.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">basic research</span><span class="tag">frontier research</span>
+          </div>
+        </article>
+        <article class="call-card" data-call-id="gacr-junior-star" data-status="expired" data-manual-status="closing_soon" data-deadline="2026-04-20" data-scope="CZ" data-priority="medium" data-relevance="high" data-access-barrier="individual_entry" data-domains="basic research|early career">
+          <div class="card-top">
+            <div class="card-heading">
+              <h3>
+                <a class="call-title-link" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">GA CR Junior Star</a>
+              </h3>
+              <div class="program-line">GA CR</div>
+            </div>
+            <div class="card-side">
+              <span class="badge badge-neutral">CZ</span>
+              <span class="badge badge-status-expired">Past deadline</span>
+            </div>
+          </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-medium">Priority: medium</span>
+            <span class="badge badge-relevance-high">Relevance: high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-04-20">20 Apr 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Individual entry</span>
+            </div>
+            <a class="source-cta" href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">CZ</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Past deadline</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value"><time datetime="2026-02-10">10 Feb 2026</time></dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-04-20">20 Apr 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">medium</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Individual entry</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">basic research, early career</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">GA CR</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://gacr.cz/" target="_blank" rel="noreferrer noopener">https://gacr.cz/</a></dd>
+            </div>
+          </dl>
+          <div class="card-copy">
+            <p class="summary">Funding for early-career researchers to build independent teams.</p>
+            <p class="insight"><strong>Reality check:</strong> Technically still open, but the remaining window is short and the call is realistic only for junior researchers with clearly demonstrated independence.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">basic research</span><span class="tag">early career</span>
+          </div>
+        </article>
+        <article class="call-card" data-call-id="horizon-cl4-2026-01-mat-prod-23" data-status="expired" data-manual-status="closing_soon" data-deadline="2026-04-21" data-scope="EU" data-priority="high" data-relevance="very_high" data-access-barrier="consortium_gated" data-domains="AI for materials|materials discovery|scintillators|semiconductor sensors|modelling workflows|data-driven optimization">
+          <div class="card-top">
+            <div class="card-heading">
+              <h3>
+                <a class="call-title-link" href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23" target="_blank" rel="noreferrer noopener">HORIZON-CL4-2026-01-MAT-PROD-23 AI-Enabled Materials Discovery</a>
+              </h3>
+              <div class="program-line">Horizon Europe Cluster 4</div>
+            </div>
+            <div class="card-side">
+              <span class="badge badge-neutral">EU</span>
+              <span class="badge badge-status-expired">Past deadline</span>
+            </div>
+          </div>
+          <div class="card-badges">
+            <span class="badge badge-priority-high">Priority: high</span>
+            <span class="badge badge-relevance-very_high">Relevance: very high</span>
+          </div>
+          <div class="card-decision-strip" aria-label="Decision summary">
+            <div class="decision-item">
+              <span class="decision-label">Deadline</span>
+              <span class="decision-value"><time datetime="2026-04-21">21 Apr 2026</time></span>
+            </div>
+            <div class="decision-item">
+              <span class="decision-label">Access</span>
+              <span class="decision-value">Consortium-gated</span>
+            </div>
+            <a class="source-cta" href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23" target="_blank" rel="noreferrer noopener">Open official call ↗</a>
+          </div>
+          <dl class="card-facts">
+            <div class="fact fact-program">
+              <dt class="fact-label">Program</dt>
+              <dd class="fact-value">Horizon Europe Cluster 4</dd>
+            </div>
+            <div class="fact fact-scope">
+              <dt class="fact-label">Scope</dt>
+              <dd class="fact-value">EU</dd>
+            </div>
+            <div class="fact fact-status">
+              <dt class="fact-label">Status</dt>
+              <dd class="fact-value">Past deadline</dd>
+            </div>
+            <div class="fact fact-opens">
+              <dt class="fact-label">Opens</dt>
+              <dd class="fact-value">TBD</dd>
+            </div>
+            <div class="fact fact-deadline">
+              <dt class="fact-label">Deadline</dt>
+              <dd class="fact-value"><time datetime="2026-04-21">21 Apr 2026</time></dd>
+            </div>
+            <div class="fact fact-relevance">
+              <dt class="fact-label">Relevance</dt>
+              <dd class="fact-value">very high</dd>
+            </div>
+            <div class="fact fact-priority">
+              <dt class="fact-label">Priority</dt>
+              <dd class="fact-value">high</dd>
+            </div>
+            <div class="fact fact-access">
+              <dt class="fact-label">Access</dt>
+              <dd class="fact-value">Consortium-gated</dd>
+            </div>
+            <div class="fact fact-domains">
+              <dt class="fact-label">Domains</dt>
+              <dd class="fact-value">AI for materials, materials discovery, scintillators, semiconductor sensors, modelling workflows, data-driven optimization</dd>
+            </div>
+            <div class="fact fact-source-label">
+              <dt class="fact-label">Source label</dt>
+              <dd class="fact-value">EU Funding and Tenders Portal</dd>
+            </div>
+            <div class="fact fact-source-url">
+              <dt class="fact-label">Source URL</dt>
+              <dd class="fact-value"><a href="https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23" target="_blank" rel="noreferrer noopener">https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23</a></dd>
+            </div>
+          </dl>
+          <div class="card-copy">
+            <p class="summary">Cluster 4 topic accelerating advanced materials and chemical development through AI-enabled discovery and digital modelling workflows.</p>
+            <p class="insight"><strong>Reality check:</strong> Very strong strategic fit for data-driven detector material R&amp;D, with clear value if UJF can anchor simulation and validation contributions.</p>
+            
+          </div>
+          <div class="card-tags" aria-label="Domains">
+            <span class="tag">AI for materials</span><span class="tag">materials discovery</span><span class="tag">scintillators</span><span class="tag">semiconductor sensors</span><span class="tag">modelling workflows</span><span class="tag">data-driven optimization</span>
+          </div>
+        </article>
 <!-- STATIC_ALL_CALLS_END -->
       </section>
     </main>
@@ -1295,89 +1503,6 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Thing",
-        "identifier": "horizon-cl4-2026-01-mat-prod-04",
-        "name": "HORIZON-CL4-2026-01-MAT-PROD-04 Materials and Production Innovation",
-        "program": "Horizon Europe Cluster 4",
-        "status": "closing_soon",
-        "opens_on": null,
-        "deadline": "2026-04-20",
-        "domains": [
-          "advanced materials",
-          "manufacturing",
-          "resource efficiency",
-          "detector mechanics",
-          "instrumentation"
-        ],
-        "summary": "Cluster 4 topic focused on next-generation manufacturing technologies and resource-efficient production for advanced materials and components.",
-        "url": "https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Thing",
-        "identifier": "gacr-expro",
-        "name": "GA CR EXPRO",
-        "program": "GA CR",
-        "status": "closing_soon",
-        "opens_on": "2026-02-10",
-        "deadline": "2026-04-20",
-        "domains": [
-          "basic research",
-          "frontier research"
-        ],
-        "summary": "High-risk, high-gain projects for experienced researchers.",
-        "url": "https://gacr.cz/"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Thing",
-        "identifier": "gacr-junior-star",
-        "name": "GA CR Junior Star",
-        "program": "GA CR",
-        "status": "closing_soon",
-        "opens_on": "2026-02-10",
-        "deadline": "2026-04-20",
-        "domains": [
-          "basic research",
-          "early career"
-        ],
-        "summary": "Funding for early-career researchers to build independent teams.",
-        "url": "https://gacr.cz/"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Thing",
-        "identifier": "horizon-cl4-2026-01-mat-prod-23",
-        "name": "HORIZON-CL4-2026-01-MAT-PROD-23 AI-Enabled Materials Discovery",
-        "program": "Horizon Europe Cluster 4",
-        "status": "closing_soon",
-        "opens_on": null,
-        "deadline": "2026-04-21",
-        "domains": [
-          "AI for materials",
-          "materials discovery",
-          "scintillators",
-          "semiconductor sensors",
-          "modelling workflows",
-          "data-driven optimization"
-        ],
-        "summary": "Cluster 4 topic accelerating advanced materials and chemical development through AI-enabled discovery and digital modelling workflows.",
-        "url": "https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "@type": "Thing",
         "identifier": "msca-postdoctoral-fellowships-2026",
@@ -1402,7 +1527,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 2,
       "item": {
         "@type": "Thing",
         "identifier": "tacr-sigma-applied-research-for-public-needs",
@@ -1422,7 +1547,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 3,
       "item": {
         "@type": "Thing",
         "identifier": "gacr-croatia-czech-projects-2027",
@@ -1441,7 +1566,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 4,
       "item": {
         "@type": "Thing",
         "identifier": "m-era-net-call-2026",
@@ -1461,7 +1586,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 5,
       "item": {
         "@type": "Thing",
         "identifier": "horizon-europe-research-infrastructures-calls",
@@ -1484,7 +1609,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 6,
       "item": {
         "@type": "Thing",
         "identifier": "euratom-research-and-training-actions",
@@ -1509,7 +1634,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 7,
       "item": {
         "@type": "Thing",
         "identifier": "erc-advanced-grant",
@@ -1529,7 +1654,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 8,
       "item": {
         "@type": "Thing",
         "identifier": "digital-europe-ai-genai-medical-imaging-pilots-2026",
@@ -1551,7 +1676,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 9,
       "item": {
         "@type": "Thing",
         "identifier": "gacr-postdoc-individual-fellowship-2027",
@@ -1570,7 +1695,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 10,
       "item": {
         "@type": "Thing",
         "identifier": "op-jak-top-research",
@@ -1590,7 +1715,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 11,
       "item": {
         "@type": "Thing",
         "identifier": "op-jak-vyzkumne-infrastruktury-ii",
@@ -1605,6 +1730,89 @@
         ],
         "summary": "Planned call for development of research infrastructures and e-infrastructures.",
         "url": "https://opjak.cz/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Thing",
+        "identifier": "horizon-cl4-2026-01-mat-prod-04",
+        "name": "HORIZON-CL4-2026-01-MAT-PROD-04 Materials and Production Innovation",
+        "program": "Horizon Europe Cluster 4",
+        "status": "expired",
+        "opens_on": null,
+        "deadline": "2026-04-20",
+        "domains": [
+          "advanced materials",
+          "manufacturing",
+          "resource efficiency",
+          "detector mechanics",
+          "instrumentation"
+        ],
+        "summary": "Cluster 4 topic focused on next-generation manufacturing technologies and resource-efficient production for advanced materials and components.",
+        "url": "https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-04"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Thing",
+        "identifier": "gacr-expro",
+        "name": "GA CR EXPRO",
+        "program": "GA CR",
+        "status": "expired",
+        "opens_on": "2026-02-10",
+        "deadline": "2026-04-20",
+        "domains": [
+          "basic research",
+          "frontier research"
+        ],
+        "summary": "High-risk, high-gain projects for experienced researchers.",
+        "url": "https://gacr.cz/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Thing",
+        "identifier": "gacr-junior-star",
+        "name": "GA CR Junior Star",
+        "program": "GA CR",
+        "status": "expired",
+        "opens_on": "2026-02-10",
+        "deadline": "2026-04-20",
+        "domains": [
+          "basic research",
+          "early career"
+        ],
+        "summary": "Funding for early-career researchers to build independent teams.",
+        "url": "https://gacr.cz/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Thing",
+        "identifier": "horizon-cl4-2026-01-mat-prod-23",
+        "name": "HORIZON-CL4-2026-01-MAT-PROD-23 AI-Enabled Materials Discovery",
+        "program": "Horizon Europe Cluster 4",
+        "status": "expired",
+        "opens_on": null,
+        "deadline": "2026-04-21",
+        "domains": [
+          "AI for materials",
+          "materials discovery",
+          "scintillators",
+          "semiconductor sensors",
+          "modelling workflows",
+          "data-driven optimization"
+        ],
+        "summary": "Cluster 4 topic accelerating advanced materials and chemical development through AI-enabled discovery and digital modelling workflows.",
+        "url": "https://funding-and-tenders.ec.europa.eu/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2026-01-MAT-PROD-23"
       }
     }
   ]

@@ -132,6 +132,56 @@ button {
   line-height: 1.45;
 }
 
+.portfolio-dashboard {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.dashboard-card {
+  min-width: 0;
+  padding: 0.8rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.dashboard-label {
+  display: block;
+  min-height: 2.1em;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+}
+
+.dashboard-value {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1;
+  color: var(--accent-deep);
+}
+
+.data-health-warning {
+  margin: 0.9rem 0 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(159, 94, 43, 0.22);
+  border-radius: 16px;
+  background: rgba(159, 94, 43, 0.10);
+  color: #75421b;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.data-health-warning[hidden] {
+  display: none !important;
+}
+
 .hero-visual {
   display: flex;
   align-items: stretch;
@@ -162,8 +212,39 @@ button {
   margin-bottom: 1rem;
 }
 
-.filter-head {
+.filter-search {
+  margin-bottom: 1rem;
+}
+
+.filter-search-label {
+  display: block;
   margin-bottom: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.filter-search-input {
+  width: min(100%, 48rem);
+  min-height: 2.85rem;
+  padding: 0.72rem 0.9rem;
+  border: 1px solid rgba(64, 126, 201, 0.22);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  box-shadow: var(--shadow-soft);
+}
+
+.filter-search-input:focus {
+  outline: 3px solid rgba(64, 126, 201, 0.18);
+  border-color: rgba(64, 126, 201, 0.48);
+}
+
+.filter-head {
+  margin: 0.9rem 0 0.45rem;
 }
 
 .filter-label {
@@ -299,6 +380,63 @@ button {
   justify-content: flex-end;
 }
 
+.card-decision-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr)) auto;
+  gap: 0.7rem;
+  align-items: stretch;
+  padding: 0.75rem;
+  border: 1px solid rgba(64, 126, 201, 0.14);
+  border-radius: 18px;
+  background: rgba(244, 247, 251, 0.72);
+}
+
+.decision-item {
+  min-width: 0;
+}
+
+.decision-label {
+  display: block;
+  margin-bottom: 0.18rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+}
+
+.decision-value {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.source-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(64, 126, 201, 0.28);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent-deep);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.source-cta:hover,
+.source-cta:focus-visible {
+  border-color: rgba(64, 126, 201, 0.52);
+  background: var(--accent-soft);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
 .badge,
 .tag {
   display: inline-flex;
@@ -386,6 +524,12 @@ button {
 .badge-priority-low {
   background: rgba(29, 50, 88, 0.09);
   color: var(--accent-deep);
+}
+
+.badge-status-expired {
+  background: rgba(105, 128, 155, 0.14);
+  color: #42566c;
+  border-color: rgba(105, 128, 155, 0.24);
 }
 
 .card-facts {
@@ -476,6 +620,12 @@ button {
   color: #1e6b3d;
 }
 
+.action-note-expired {
+  background: rgba(105, 128, 155, 0.12);
+  border-left-color: #69809b;
+  color: #42566c;
+}
+
 .tag {
   border: 1px solid rgba(64, 126, 201, 0.16);
   background: var(--surface-muted);
@@ -508,6 +658,7 @@ button {
   .content-head,
   .card-top,
   .card-footer,
+  .card-decision-strip,
   .filter-head {
     grid-template-columns: 1fr;
   }
@@ -519,6 +670,7 @@ button {
   .content-head,
   .card-top,
   .card-footer,
+  .card-decision-strip,
   .filter-head {
     display: grid;
     align-items: start;
@@ -526,6 +678,10 @@ button {
 
   .card-side {
     justify-content: flex-start;
+  }
+
+  .portfolio-dashboard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -556,6 +712,10 @@ button {
   }
 
   .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-dashboard {
     grid-template-columns: 1fr;
   }
 }
