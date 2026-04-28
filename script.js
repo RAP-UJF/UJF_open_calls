@@ -4,11 +4,14 @@ const heroLastUpdated = document.getElementById("hero-last-updated");
 const heroCallCount = document.getElementById("hero-call-count");
 const dataHealthWarning = document.getElementById("data-health-warning");
 const dashboardMetricElements = document.querySelectorAll("[data-dashboard-metric]");
+const dashboardFilterButtons = document.querySelectorAll("[data-dashboard-filter]");
 const callSearch = document.getElementById("call-search");
 const domainFilter = document.getElementById("domain-filter");
 const accessFilter = document.getElementById("access-filter");
 const statusFilter = document.getElementById("status-filter");
 const deadlineFilter = document.getElementById("deadline-filter");
+const DOMAIN_TAG_COLLAPSED_CLASS = "is-domain-collapsed";
+const DOMAIN_TAG_EXPANDED_CLASS = "is-domain-expanded";
 const DATA_URL = "data/calls.json";
 const CLOSING_SOON_DAYS = 42;
 const PARTNERSHIP_ACCESS_BARRIERS = new Set([
@@ -85,6 +88,8 @@ async function loadCalls() {
     renderStatusFilters();
     renderDeadlineFilters();
     bindSearchInput();
+    bindDashboardMetricActions();
+    setupDomainTagToggles();
     renderPage();
   } catch (error) {
     console.error("Failed to load funding calls:", error);
@@ -116,6 +121,7 @@ async function loadCalls() {
         </article>
       `;
     }
+    setupDomainTagToggles();
   }
 }
 
@@ -159,6 +165,7 @@ function calculatePortfolioMetrics(calls) {
     active: 0,
     monitoring: 0,
     expired: 0,
+    individual: 0,
     next30: 0
   };
   const today = startOfDay(new Date());
@@ -166,6 +173,10 @@ function calculatePortfolioMetrics(calls) {
   next30.setDate(today.getDate() + 30);
 
   calls.forEach((call) => {
+    if (toText(call && call.access_barrier, "") === "individual_entry") {
+      metrics.individual += 1;
+    }
+
     const status = getEffectiveStatus(call);
     if (status === "expired") {
       metrics.expired += 1;
@@ -196,6 +207,7 @@ function renderPage() {
 
   const visibleCount = applyFiltersToDom();
   updateLoadingState(visibleCount, allCalls.length);
+  updateDashboardActionStates();
 }
 
 function filterCalls(calls, domain, access) {
@@ -252,6 +264,7 @@ function renderDomainFilters(calls) {
       renderPage();
     });
   });
+  setupDomainFilterToggle();
 }
 
 function syncActiveDomain(calls) {
@@ -276,7 +289,7 @@ function renderAccessFilters() {
 
   const items = [
     { value: "all", label: "All access" },
-    { value: "individual_entry", label: "Individual entry" },
+    { value: "individual_entry", label: "Individual" },
     { value: "partnership", label: "Partnership" }
   ];
 
@@ -298,9 +311,9 @@ function renderStatusFilters() {
 
   const items = [
     { value: "all", label: "All status" },
-    { value: "active", label: "Open / active" },
-    { value: "monitoring", label: "Monitoring / planned" },
-    { value: "expired", label: "Past deadline" }
+    { value: "active", label: "Active" },
+    { value: "monitoring", label: "Monitoring" },
+    { value: "expired", label: "Past" }
   ];
 
   statusFilter.innerHTML = items.map((item) => createStatusFilterButtonMarkup(item)).join("");
@@ -321,10 +334,10 @@ function renderDeadlineFilters() {
 
   const items = [
     { value: "all", label: "All deadlines" },
-    { value: "next_30", label: "Next 30 days" },
-    { value: "next_90", label: "Next 90 days" },
-    { value: "none", label: "No deadline" },
-    { value: "past", label: "Past deadline" }
+    { value: "next_30", label: "30 days" },
+    { value: "next_90", label: "90 days" },
+    { value: "none", label: "None" },
+    { value: "past", label: "Past" }
   ];
 
   deadlineFilter.innerHTML = items.map((item) => createDeadlineFilterButtonMarkup(item)).join("");
@@ -349,6 +362,184 @@ function bindSearchInput() {
     renderPage();
   });
 }
+
+function bindDashboardMetricActions() {
+  if (!dashboardFilterButtons.length) {
+    return;
+  }
+
+  dashboardFilterButtons.forEach((button) => {
+    if (button.dataset.bound === "true") {
+      return;
+    }
+
+    button.dataset.bound = "true";
+    button.addEventListener("click", () => {
+      applyDashboardFilter(button.dataset.dashboardFilter || "tracked");
+    });
+  });
+}
+
+function applyDashboardFilter(metricName) {
+  activeDomain = "all";
+  activeAccess = "all";
+  activeStatus = "all";
+  activeDeadline = "all";
+  activeSearch = "";
+
+  if (callSearch) {
+    callSearch.value = "";
+  }
+
+  if (metricName === "active") {
+    activeStatus = "active";
+  } else if (metricName === "monitoring") {
+    activeStatus = "monitoring";
+  } else if (metricName === "individual") {
+    activeAccess = "individual_entry";
+  } else if (metricName === "next30") {
+    activeDeadline = "next_30";
+  }
+
+  renderAccessFilters();
+  renderStatusFilters();
+  renderDeadlineFilters();
+  renderPage();
+}
+
+function updateDashboardActionStates() {
+  if (!dashboardFilterButtons.length) {
+    return;
+  }
+
+  dashboardFilterButtons.forEach((button) => {
+    const isActive = dashboardMetricMatchesCurrentFilter(button.dataset.dashboardFilter || "tracked");
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function dashboardMetricMatchesCurrentFilter(metricName) {
+  const commonFiltersAreClear = activeDomain === "all" && activeSearch === "";
+
+  if (!commonFiltersAreClear) {
+    return false;
+  }
+
+  if (metricName === "tracked") {
+    return activeAccess === "all" && activeStatus === "all" && activeDeadline === "all";
+  }
+
+  if (metricName === "active") {
+    return activeAccess === "all" && activeStatus === "active" && activeDeadline === "all";
+  }
+
+  if (metricName === "monitoring") {
+    return activeAccess === "all" && activeStatus === "monitoring" && activeDeadline === "all";
+  }
+
+  if (metricName === "individual") {
+    return activeAccess === "individual_entry" && activeStatus === "all" && activeDeadline === "all";
+  }
+
+  if (metricName === "next30") {
+    return activeAccess === "all" && activeStatus === "all" && activeDeadline === "next_30";
+  }
+
+  return false;
+}
+
+function setupDomainTagToggles() {
+  if (!callsContainer) {
+    return;
+  }
+
+  callsContainer.querySelectorAll(".card-tags").forEach((tagList) => {
+    tagList.classList.add(DOMAIN_TAG_COLLAPSED_CLASS);
+    if (tagList.dataset.domainToggleBound === "true") {
+      updateDomainTagToggle(tagList);
+      return;
+    }
+
+    tagList.dataset.domainToggleBound = "true";
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "domain-toggle";
+    button.setAttribute("aria-expanded", "false");
+    button.textContent = "Show all domains";
+    button.addEventListener("click", () => {
+      const isExpanded = tagList.classList.toggle(DOMAIN_TAG_EXPANDED_CLASS);
+      tagList.classList.toggle(DOMAIN_TAG_COLLAPSED_CLASS, !isExpanded);
+      button.setAttribute("aria-expanded", String(isExpanded));
+      button.textContent = isExpanded ? "Show fewer domains" : "Show all domains";
+    });
+
+    tagList.insertAdjacentElement("afterend", button);
+    updateDomainTagToggle(tagList);
+  });
+}
+
+function setupDomainFilterToggle() {
+  if (!domainFilter) {
+    return;
+  }
+
+  domainFilter.classList.add(DOMAIN_TAG_COLLAPSED_CLASS);
+  let button = document.getElementById("domain-filter-toggle");
+  if (!button) {
+    button = document.createElement("button");
+    button.id = "domain-filter-toggle";
+    button.type = "button";
+    button.className = "domain-toggle domain-filter-toggle";
+    button.setAttribute("aria-controls", "domain-filter");
+    button.setAttribute("aria-expanded", "false");
+    button.textContent = "Show all domains";
+    button.addEventListener("click", () => {
+      const isExpanded = domainFilter.classList.toggle(DOMAIN_TAG_EXPANDED_CLASS);
+      domainFilter.classList.toggle(DOMAIN_TAG_COLLAPSED_CLASS, !isExpanded);
+      button.setAttribute("aria-expanded", String(isExpanded));
+      button.textContent = isExpanded ? "Show fewer domains" : "Show all domains";
+    });
+    domainFilter.insertAdjacentElement("afterend", button);
+  }
+
+  updateDomainFilterToggle();
+}
+
+function updateDomainTagToggle(tagList) {
+  const button = tagList.nextElementSibling;
+  if (!button || !button.classList.contains("domain-toggle")) {
+    return;
+  }
+
+  const wasExpanded = tagList.classList.contains(DOMAIN_TAG_EXPANDED_CLASS);
+  if (!wasExpanded) {
+    tagList.classList.add(DOMAIN_TAG_COLLAPSED_CLASS);
+  }
+  const hasOverflow = tagList.scrollHeight > tagList.clientHeight + 1;
+  button.hidden = !wasExpanded && !hasOverflow;
+}
+
+function updateDomainFilterToggle() {
+  const button = document.getElementById("domain-filter-toggle");
+  if (!domainFilter || !button) {
+    return;
+  }
+
+  const wasExpanded = domainFilter.classList.contains(DOMAIN_TAG_EXPANDED_CLASS);
+  if (!wasExpanded) {
+    domainFilter.classList.add(DOMAIN_TAG_COLLAPSED_CLASS);
+  }
+  const hasOverflow = domainFilter.scrollHeight > domainFilter.clientHeight + 1;
+  button.hidden = !wasExpanded && !hasOverflow;
+}
+
+window.addEventListener("resize", () => {
+  if (callsContainer) {
+    callsContainer.querySelectorAll(".card-tags").forEach(updateDomainTagToggle);
+  }
+  updateDomainFilterToggle();
+});
 
 function createFilterButtonMarkup(item) {
   const isActive = item.value === activeDomain;
