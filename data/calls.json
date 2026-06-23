@@ -9,7 +9,7 @@
         "opens_on": "2026-04-09",
         "priority": "high",
         "deadline": "2026-09-09",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "very_high",
         "domains": [
             "nuclear physics",
@@ -21,11 +21,11 @@
             "simulation",
             "AI in physics"
         ],
-        "summary": "MSCA PF 2026 call supporting researcher mobility and postdoctoral projects, with a reported 399.05 million EUR budget and links to ERA Fellowships for widening countries.",
+        "summary": "MSCA Postdoctoral Fellowships 2026 support researcher mobility and postdoctoral projects, including ERA Fellowships routes for widening countries.",
         "reality_check": "High-fit route for incoming and outgoing postdocs at UJF, including Euratom-relevant areas, but success depends on strong candidate-host pairing and early proposal shaping.",
-        "action_note": "Highest-priority active window for immediate candidate scouting and proposal shaping.",
-        "source_label": "EU Funding and Tenders Portal",
-        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2026-PF-01"
+        "action_note": "Start an internal UJF harvest of incoming and outgoing candidates and host groups now.",
+        "source_label": "Marie Sklodowska-Curie Actions",
+        "source_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships"
     },
     {
         "id": "erc-advanced-grant",
@@ -50,35 +50,8 @@
         "source_url": "https://erc.europa.eu/apply-grant/advanced-grant"
     },
     {
-        "id": "horizon-europe-research-infrastructures-calls",
-        "title": "Horizon Europe Research Infrastructures 2026",
-        "program": "Horizon Europe",
-        "scope": "EU",
-        "status": "open_consortium_gated",
-        "access_barrier": "consortium_gated",
-        "opens_on": "2026-03-10",
-        "priority": "high",
-        "deadline": "2026-06-16",
-        "last_updated": "2026-05-13",
-        "relevance": "very_high",
-        "domains": [
-            "research infrastructure",
-            "scientific instrumentation",
-            "digitalisation",
-            "data services",
-            "EOSC",
-            "detectors",
-            "HPC"
-        ],
-        "summary": "Active Horizon Europe Research Infrastructures 2026 calls covering RI consolidation, next-generation scientific instrumentation, tools, methods, digitalisation, and data/EOSC services.",
-        "reality_check": "Very short fuse before the 16 June deadline; the next-generation instrumentation/tools/methods/digitalisation topic is especially relevant and is reported with a 110 million EUR budget.",
-        "source_label": "European Commission",
-        "source_url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/research-infrastructures_en",
-        "action_note": "Treat as short-fuse: proceed only with already mature RI partners and a clear UJF role."
-    },
-    {
         "id": "euratom-research-and-training-actions",
-        "title": "HORIZON-EURATOM-2026-01",
+        "title": "Euratom Research and Training Programme 2026-2027",
         "program": "Euratom",
         "scope": "EU",
         "status": "open_consortium_gated",
@@ -86,7 +59,7 @@
         "opens_on": null,
         "priority": "high",
         "deadline": "2026-09-15",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "very_high",
         "domains": [
             "nuclear safety",
@@ -98,10 +71,11 @@
             "skills",
             "medical physics"
         ],
-        "summary": "Open Euratom 2026-2027 agenda for fission, nuclear safety, radiation protection, nuclear materials, non-power applications, radioisotopes, and nuclear skills.",
-        "reality_check": "Core thematic fit for UJF; programme budget is about 330 million EUR, with about 108 million EUR for fission, safety, and radiation protection, but proposals need mature European consortia.",
-        "source_label": "EU Funding and Tenders Portal",
-        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EURATOM-2026-01"
+        "summary": "Euratom 2026-2027 work programme for fission, nuclear safety, radiation protection, nuclear materials, non-power applications, radioisotopes, and nuclear skills, with about 330 million EUR overall and about 108 million EUR for fission, safety, and radiation protection.",
+        "reality_check": "Core thematic fit for UJF, but the useful route is through mature European consortia and a small number of well-matched topics rather than broad monitoring.",
+        "source_label": "European Commission Research and Innovation",
+        "source_url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/euratom-research-and-training-programme_en",
+        "action_note": "Within one week, shortlist 3-5 topics and test consortium routes."
     },
     {
         "id": "digital-europe-ai-genai-medical-imaging-pilots-2026",
@@ -126,28 +100,6 @@
         "reality_check": "Relevant mainly through clinical and data-hub partnerships; UJF impact is strongest when positioned on physics-informed methods and validation.",
         "source_label": "European Commission Digital Strategy",
         "source_url": "https://digital-strategy.ec.europa.eu/en/activities/work-programmes-digital"
-    },
-    {
-        "id": "tacr-sigma-applied-research-for-public-needs",
-        "title": "TA CR SIGMA - Applied Research for Public Needs",
-        "program": "TA CR",
-        "scope": "CZ",
-        "status": "open_partner_required",
-        "access_barrier": "partner_required",
-        "opens_on": null,
-        "priority": "medium",
-        "deadline": "2026-05-22",
-        "last_updated": "2026-04-27",
-        "relevance": "medium",
-        "domains": [
-            "applied research",
-            "instrumentation",
-            "public sector cooperation"
-        ],
-        "summary": "National applied research support for consortia solving practical public-sector or societal needs with measurable outputs.",
-        "reality_check": "Open and potentially relevant, but the practical chance stays low without a concrete implementation or industry-facing partner and a deliverable beyond basic research.",
-        "source_label": "TA CR Programmes",
-        "source_url": "https://www.tacr.cz/en/programmes/"
     },
     {
         "id": "op-jak-top-research",
@@ -202,16 +154,17 @@
         "opens_on": null,
         "priority": "high",
         "deadline": null,
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "research infrastructure",
             "equipment"
         ],
-        "summary": "Planned OP JAK call for modernization and development of large research infrastructures, expected around October/November 2026 with a planned allocation of 1.9 billion CZK.",
-        "reality_check": "Potentially crucial for UJF if it has a recognized large-RI role or a concrete modernization package; otherwise only an institutional watchlist item.",
+        "summary": "Planned OP JAK call for modernization and development of large research infrastructures, expected around October/November 2026-March/April 2027 with a planned 1.9 billion CZK allocation.",
+        "reality_check": "Potentially crucial for UJF if it has a recognized large-RI role or a concrete modernization package; preparation should not wait until the call launch.",
         "source_label": "OP JAK",
-        "source_url": "https://opjak.cz/"
+        "source_url": "https://opjak.cz/",
+        "action_note": "Prepare the technical wishlist and institute-level prioritization now, before the October/November window."
     },
     {
         "id": "op-tak-aplikace-mezinarodni-spoluprace",
@@ -317,10 +270,10 @@
         "status": "monitoring_planned",
         "access_barrier": "institutional_only",
         "opens_on": null,
-        "priority": "medium",
+        "priority": "high",
         "deadline": null,
-        "last_updated": "2026-05-13",
-        "relevance": "medium",
+        "last_updated": "2026-06-23",
+        "relevance": "high",
         "domains": [
             "open science",
             "FAIR data",
@@ -328,10 +281,11 @@
             "nuclear data",
             "repositories"
         ],
-        "summary": "Planned OP JAK Open Science III call expected around June/July 2026 with a planned allocation of 500 million CZK.",
-        "reality_check": "Relevant for UJF data, EOSC, FAIR, DMP, repositories, and institutional data governance; still a planned call.",
+        "summary": "Planned OP JAK Open Science III call with expected June/July 2026 launch, July 2026-February 2027 intake, and a planned 500 million CZK allocation.",
+        "reality_check": "A/B institutional fit for UJF where EOSC, FAIR data, data infrastructure, repositories, or nuclear-data governance are concrete rather than generic.",
         "source_label": "OP JAK",
-        "source_url": "https://opjak.cz/"
+        "source_url": "https://opjak.cz/",
+        "action_note": "Map datasets, repositories, FAIR gaps, and data-service partners before the call opens."
     },
     {
         "id": "op-jak-vyzkumne-e-infrastruktury-ii",
@@ -343,7 +297,7 @@
         "opens_on": null,
         "priority": "medium",
         "deadline": null,
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "medium",
         "domains": [
             "e-infrastructure",
@@ -351,10 +305,11 @@
             "data services",
             "research computing"
         ],
-        "summary": "Planned OP JAK call for research e-infrastructures, expected around November 2026 with a planned allocation of 600 million CZK.",
-        "reality_check": "Relevant only through clear e-infrastructure, data, HPC, or service-provider links; otherwise partner-level monitoring.",
+        "summary": "Planned OP JAK call for research e-infrastructures, expected around November 2026-March/April 2027 with a planned 600 million CZK allocation.",
+        "reality_check": "Relevant only through a clear e-infrastructure, HPC, data-service, or service-provider role; otherwise keep as a B-level watchlist item.",
         "source_label": "OP JAK",
-        "source_url": "https://opjak.cz/"
+        "source_url": "https://opjak.cz/",
+        "action_note": "Keep only if UJF can name an e-infrastructure, HPC, or data-service role."
     },
     {
         "id": "msmt-program-excelence",
@@ -388,7 +343,7 @@
         "opens_on": "2026-02-10",
         "priority": "medium",
         "deadline": "2026-10-08",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "basic research",
@@ -400,19 +355,20 @@
         "summary": "GA CR Lead Agency route for Swiss-Czech basic-research projects, with SNSF deadline on 1 October 2026 and Czech submission due by 8 October 2026.",
         "reality_check": "High fit for physics, materials, space, and nuclear experiments where a Swiss PI and coherent joint proposal already exist.",
         "source_label": "GA CR",
-        "source_url": "https://gacr.cz/vyzva-pro-podavani-svycarsko-ceskych-projektu-2027/"
+        "source_url": "https://gacr.cz/vyzva-pro-podavani-svycarsko-ceskych-projektu-2027/",
+        "action_note": "Use only where a Swiss PI and coherent joint proposal already exist; otherwise shift effort to later preparation."
     },
     {
         "id": "msca-doctoral-networks-2026",
         "title": "HORIZON-MSCA-2026-DN Doctoral Networks",
         "program": "MSCA",
         "scope": "EU",
-        "status": "monitoring_expected",
+        "status": "open_consortium_gated",
         "access_barrier": "consortium_gated",
         "opens_on": "2026-05-28",
         "priority": "high",
         "deadline": "2026-11-24",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "doctoral training",
@@ -422,10 +378,11 @@
             "radiobiology",
             "mobility"
         ],
-        "summary": "MSCA Doctoral Networks 2026 call for international doctoral training consortia, opening on 28 May 2026 with a reported 593.03 million EUR budget.",
-        "reality_check": "Strong strategic fit for UJF doctoral pipelines in nuclear data, detectors, radio-pharmaceuticals, radiation protection, and space instrumentation, but requires a mature training consortium.",
-        "source_label": "EU Funding and Tenders Portal",
-        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2026-DN-01"
+        "summary": "MSCA Doctoral Networks 2026 are open from 28 May 2026 with a 24 November 2026 deadline for international doctoral training consortia.",
+        "reality_check": "Strong strategic fit for UJF doctoral pipelines in nuclear data, detectors, radiochemistry, radiation protection, and space instrumentation, but only with a mature training consortium.",
+        "source_label": "European Research Executive Agency",
+        "source_url": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-doctoral-networks_en",
+        "action_note": "Identify coordinator and partner roles before summer; do not start as a late standalone idea."
     },
     {
         "id": "iaea-crp-f23037-radiation-polymers",
@@ -520,33 +477,8 @@
         "source_url": "https://www.iaea.org/projects/crp/i31042"
     },
     {
-        "id": "jrc-emma-2026-access-calls",
-        "title": "JRC EMMA 2026 Access Calls - SMPA, AMALIA and MCL",
-        "program": "JRC",
-        "scope": "EU",
-        "status": "closing_soon",
-        "access_barrier": "institutional_only",
-        "opens_on": "2026-04-15",
-        "priority": "medium",
-        "deadline": "2026-06-05",
-        "last_updated": "2026-05-13",
-        "relevance": "high",
-        "domains": [
-            "nuclear materials",
-            "corrosion",
-            "ageing",
-            "microcharacterization",
-            "lab access",
-            "materials testing"
-        ],
-        "summary": "JRC EMMA access calls provide in-kind access to SMPA, AMALIA, and MCL laboratories relevant to nuclear materials, corrosion, ageing, and micro-characterisation.",
-        "reality_check": "Very short deadline and not a classic grant; valuable only with a sharply defined nuclear-materials access case.",
-        "source_label": "JRC Open Access to Research Infrastructures",
-        "source_url": "https://joint-research-centre.ec.europa.eu/open-access-jrc-research-infrastructures_en"
-    },
-    {
         "id": "avcr-pcp-05-2026",
-        "title": "AV CR 05/2026 - Podpora cinnosti pracovist AV CR",
+        "title": "AV CR PCP 05/2026 - Podpora cinnosti pracovist AV CR",
         "program": "AV CR",
         "scope": "CZ",
         "status": "open",
@@ -554,7 +486,7 @@
         "opens_on": null,
         "priority": "high",
         "deadline": "2026-10-12",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "very_high",
         "domains": [
             "institutional support",
@@ -564,11 +496,11 @@
             "mobility",
             "AV CR institutes"
         ],
-        "summary": "Main AV CR internal support call for institute activities, covering instruments such as Praemium Academiae, Lumina quaeruntur, ERC-in, PPLZ, DSc., Wichterle, Akademie budoucnosti, AV21, and regional cooperation.",
-        "reality_check": "Main AV CR envelope for UJF planning: new requests are due 12 October, change requests 26 November, and circuit 6 by 8 December 2026; run one internal harvest across PA, LQ, ERC-in, PPLZ, Akademie budoucnosti, AV21, and mobility.",
+        "summary": "Main AV CR internal support package for UJF-relevant instruments such as Lumina quaeruntur, Praemium Academiae, PPLZ, ERC-in, Akademie budoucnosti, AV21, and related institute requests.",
+        "reality_check": "Main AV CR envelope for UJF planning: new requests are due 12 October, change requests 26 November, and circuit 6 by 8 December 2026; one internal harvest should cover the package.",
         "source_label": "AV CR current calls",
         "source_url": "https://www.avcr.cz/cs/veda-a-vyzkum/podpora-vyzkumu/aktualni-vyzvy-av-cr/",
-        "action_note": "Prepare a single PČP harvest instead of collecting candidates at the last minute."
+        "action_note": "Set up one internal candidate-harvest table for LQ, PA, PPLZ, ERC-in, Akademie budoucnosti, AV21, and related requests."
     },
     {
         "id": "avcr-akademie-budoucnosti-2026",
@@ -580,7 +512,7 @@
         "opens_on": null,
         "priority": "high",
         "deadline": null,
-        "last_updated": "2026-04-28",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "mobility",
@@ -592,7 +524,8 @@
         "summary": "AV CR career-support instrument for junior and senior research stays, good-practice exchange, and returns after career breaks.",
         "reality_check": "High practical value for UJF because it can be used through internal institute selection; collect concrete stay and return candidates early.",
         "source_label": "AV CR",
-        "source_url": "https://www.avcr.cz/cs/o-nas/Z-Akademie/Oceneni/Akademie-ved-CR-podpori-excelenci-a-kariery-vedcu-a-vedkyn-novymi-programy/"
+        "source_url": "https://www.avcr.cz/cs/o-nas/Z-Akademie/Oceneni/Akademie-ved-CR-podpori-excelenci-a-kariery-vedcu-a-vedkyn-novymi-programy/",
+        "action_note": "Collect concrete stay, return, and good-practice-exchange candidates through the PCP harvest."
     },
     {
         "id": "avcr-erc-in-2026",
@@ -604,7 +537,7 @@
         "opens_on": null,
         "priority": "high",
         "deadline": "2026-10-12",
-        "last_updated": "2026-04-28",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "ERC preparation",
@@ -616,7 +549,8 @@
         "summary": "AV CR support for employees preparing ERC proposals, including mentoring, consultations, interview preparation, and related costs.",
         "reality_check": "Small-budget but high-leverage route for building a disciplined ERC pipeline at UJF; useful only for PIs with a realistic ERC profile.",
         "source_label": "AV CR 05/2026 call PDF",
-        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf"
+        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf",
+        "action_note": "Use only for PIs with a realistic ERC target and align candidates with the PCP harvest."
     },
     {
         "id": "avcr-lumina-quaeruntur-2026",
@@ -628,7 +562,7 @@
         "opens_on": null,
         "priority": "medium",
         "deadline": "2026-10-12",
-        "last_updated": "2026-04-28",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "research team development",
@@ -641,7 +575,8 @@
         "summary": "AV CR excellence instrument for developing an independent scientific team and research programme.",
         "reality_check": "Potentially strong fit for UJF only where there is a candidate with a clear independent programme, international profile, and institute co-financing capacity.",
         "source_label": "AV CR 05/2026 call PDF",
-        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf"
+        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf",
+        "action_note": "Screen only candidates with a credible independent programme and institute co-financing path."
     },
     {
         "id": "avcr-praemium-academiae-2026",
@@ -653,7 +588,7 @@
         "opens_on": null,
         "priority": "medium",
         "deadline": "2026-10-12",
-        "last_updated": "2026-04-28",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "research excellence",
@@ -664,7 +599,8 @@
         "summary": "AV CR elite support for outstanding senior researchers and their directly related scientific activity.",
         "reality_check": "Use only for genuinely exceptional senior PI candidates; this is not a broad group-leader support tool.",
         "source_label": "AV CR 05/2026 call PDF",
-        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf"
+        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf",
+        "action_note": "Keep selective; use only for genuinely exceptional senior PI candidates."
     },
     {
         "id": "avcr-pplz-postdoktorandi-2026",
@@ -676,7 +612,7 @@
         "opens_on": null,
         "priority": "medium",
         "deadline": "2026-10-12",
-        "last_updated": "2026-04-28",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "postdoctoral support",
@@ -689,7 +625,8 @@
         "summary": "AV CR PPLZ postdoctoral support for early-career researchers at AV CR institutes.",
         "reality_check": "Practical personnel-pipeline tool for UJF postdocs shortly after Ph.D.; strongest when tied to a concrete research plan and host group.",
         "source_label": "AV CR 05/2026 call PDF",
-        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf"
+        "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/aktualni-vyzvy-av-cr/Vyzva-05-2026_.pdf",
+        "action_note": "Collect postdoc candidates in the same PCP table, tied to host group and research plan."
     },
     {
         "id": "avcr-strategie-av21-2026",
@@ -740,45 +677,16 @@
         "source_url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/akademicky-snem/LXVI/Zprava-o-ekonomicke-situaci-AV-CR-a-navrh-jejiho-rozpoctu-na-rok-2026.pdf"
     },
     {
-        "id": "avcr-mobility-plus-2026-watchlist",
-        "title": "AV CR Mobility Plus - projects from 2027",
-        "program": "AV CR",
-        "scope": "CZ",
-        "status": "open",
-        "access_barrier": "partner_required",
-        "opens_on": "2026-04-13",
-        "priority": "high",
-        "deadline": "2026-06-08",
-        "last_updated": "2026-05-13",
-        "relevance": "high",
-        "domains": [
-            "mobility",
-            "international collaboration",
-            "partner projects",
-            "small cooperation",
-            "Taiwan",
-            "CNRS",
-            "DAAD",
-            "JSPS",
-            "NSFC"
-        ],
-        "summary": "AV CR Mobility Plus call for bilateral and partner-country projects starting in 2027, including partners such as Taiwan, Bulgaria, France/CNRS, India, Germany/DAAD, Japan/JSPS, China/NSFC, Slovakia/SAV, and Turkey/TUBITAK.",
-        "reality_check": "Short deadline and practical fit for targeted international cooperation; collect partner, topic, added value, and follow-on grant logic immediately.",
-        "source_label": "AV CR current calls",
-        "source_url": "https://www.avcr.cz/cs/veda-a-vyzkum/podpora-vyzkumu/aktualni-vyzvy-av-cr/",
-        "action_note": "Collect UJF project intents within one week; treat as the only new urgent AV CR action item."
-    },
-    {
         "id": "tacr-sigma-dc4-bilateral-cooperation-2026",
         "title": "TA CR SIGMA DC4 - Bilateral Cooperation 2026",
         "program": "TA CR",
         "scope": "CZ",
-        "status": "open_partner_required",
+        "status": "monitoring_expected",
         "access_barrier": "partner_required",
         "opens_on": "2026-04-23",
-        "priority": "high",
-        "deadline": "2026-06-24",
-        "last_updated": "2026-05-13",
+        "priority": "medium",
+        "deadline": null,
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "applied research",
@@ -788,10 +696,11 @@
             "nuclear energy",
             "materials"
         ],
-        "summary": "TA CR SIGMA DC4 bilateral applied-research competition with 250 million CZK allocation plus 40 million CZK for nuclear-energy cooperation.",
-        "reality_check": "High practical fit for applied UJF topics, but the main applicant must be a company; UJF can participate only as another participant.",
+        "summary": "TA CR SIGMA DC4 bilateral-cooperation route for international applied research involving companies and research organisations, with details monitored through SISTA and TA CR programme materials.",
+        "reality_check": "Good only with a company or applied partner; UJF fit is strongest for nuclear energy, detectors, radiation technologies, instrumentation, or materials.",
         "source_label": "TA CR",
-        "source_url": "https://www.tacr.cz/program/program-sigma/?dc=4"
+        "source_url": "https://www.tacr.cz/soutez/program-sigma/",
+        "action_note": "Proceed only with a company or application partner and a concrete bilateral applied-research case."
     },
     {
         "id": "horizon-europe-space-2026",
@@ -803,7 +712,7 @@
         "opens_on": "2026-03-10",
         "priority": "high",
         "deadline": "2026-09-03",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "space instrumentation",
@@ -813,10 +722,11 @@
             "space data",
             "irradiation facilities"
         ],
-        "summary": "Horizon Europe Space 2026 call window with topics relevant to space instrumentation, radiation-hard components, space data, and irradiation test facilities.",
-        "reality_check": "Strong UJF fit where radiation testing, detectors, EEE components, or high-energy irradiation facilities match a mature European consortium.",
-        "source_label": "EU Funding and Tenders Portal",
-        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-search"
+        "summary": "Horizon Europe Space 2026 call window with a 3 September 2026 deadline and topics relevant to space instrumentation, radiation-hard components, space data, detectors, and irradiation test facilities.",
+        "reality_check": "Strong UJF fit where radiation testing, detectors, EEE components, or high-energy irradiation facilities already match a mature European consortium.",
+        "source_label": "HaDEA",
+        "source_url": "https://hadea.ec.europa.eu/news/horizon-europe-eu-space-research-call-2026-open-submission-2026-03-12_en",
+        "action_note": "Immediately check irradiation-facility, rad-hard component, space-data, and detector consortium links."
     },
     {
         "id": "tacr-doprava-2030-4-verejna-soutez",
@@ -828,7 +738,7 @@
         "opens_on": "2026-05-13",
         "priority": "low",
         "deadline": "2026-07-08",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "medium",
         "domains": [
             "transport safety",
@@ -838,9 +748,10 @@
             "aviation testing"
         ],
         "summary": "TA CR DOPRAVA 2030 competition for transport R&D, with reported 400 million CZK allocation and up to 30 million CZK per project.",
-        "reality_check": "Not a core UJF call; use only for a real transport, aviation, safety, sensor, or materials use case without forcing the topic.",
+        "reality_check": "Not a core UJF priority; use only for an existing transport, aviation, safety, sensor, radiation-measurement, or materials use case.",
         "source_label": "TA CR",
-        "source_url": "https://www.tacr.cz/program/doprava-2030/"
+        "source_url": "https://www.tacr.cz/soutez/doprava-2030/",
+        "action_note": "Do not promote as a broad institute priority; use only when the transport application already exists."
     },
     {
         "id": "tacr-sigma-dc2-industrial-chairs-2026",
@@ -865,29 +776,6 @@
         "reality_check": "A/B watchlist only if UJF can anchor a strategic industrial partner and attract or apply a high-level expert.",
         "source_label": "TA CR",
         "source_url": "https://www.tacr.cz/program/program-sigma/"
-    },
-    {
-        "id": "azv-ep-permed-carmen2026-widening",
-        "title": "AZV / EP PerMed CARMEN2026 Widening",
-        "program": "AZV",
-        "scope": "EU",
-        "status": "monitoring_expected",
-        "access_barrier": "consortium_gated",
-        "opens_on": null,
-        "priority": "low",
-        "deadline": "2026-06-09",
-        "last_updated": "2026-05-13",
-        "relevance": "medium",
-        "domains": [
-            "personalized medicine",
-            "medical physics",
-            "radiobiology",
-            "health research"
-        ],
-        "summary": "EP PerMed CARMEN2026 widening route where Czech teams may join a successful first-stage consortium for full proposals.",
-        "reality_check": "Very narrow UJF fit; consider only with a real medical, radiobiology, or personalised-medicine consortium link.",
-        "source_label": "AZV",
-        "source_url": "https://www.azvcr.cz/ep-permed/"
     },
     {
         "id": "erc-proof-of-concept-2026",
@@ -944,7 +832,7 @@
         "opens_on": "2026-07-31",
         "priority": "medium",
         "deadline": "2026-10-28",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "medium",
         "domains": [
             "research networks",
@@ -953,10 +841,11 @@
             "Horizon preparation",
             "Euratom preparation"
         ],
-        "summary": "COST Open Call for research networking actions, expected from 31 July to 28 October 2026.",
+        "summary": "COST Open Call 2026 is expected to run from 31 July to 28 October 2026 for research networking actions.",
         "reality_check": "Does not fund research itself, but is useful for building networks before Horizon, Euratom, or applied consortia.",
         "source_label": "COST",
-        "source_url": "https://www.cost.eu/funding/open-call/"
+        "source_url": "https://www.cost.eu/funding/open-call-a-simple-one-step-application-process/",
+        "action_note": "Use as a consortium-building route, not as a direct research-funding substitute."
     },
     {
         "id": "eic-transition-2026",
@@ -968,7 +857,7 @@
         "opens_on": null,
         "priority": "medium",
         "deadline": "2026-09-16",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "high",
         "domains": [
             "technology validation",
@@ -978,9 +867,10 @@
             "commercialisation"
         ],
         "summary": "EIC Transition 2026 supports maturation and validation of technologies based on eligible EU-funded results, with grants up to about 2.5 million EUR.",
-        "reality_check": "Relevant for commercialisable UJF instrumentation, detectors, software, or spin-off logic only if there is an eligible prior EU result.",
+        "reality_check": "Relevant for commercialisable UJF instrumentation, detectors, software, or spin-off logic only when there is an eligible prior EU-funded result at the right maturity level.",
         "source_label": "EIC",
-        "source_url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-transition_en"
+        "source_url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-transition_en",
+        "action_note": "Screen candidate results for EIC eligibility before investing proposal effort."
     },
     {
         "id": "eic-pathfinder-challenges-2026",
@@ -992,7 +882,7 @@
         "opens_on": null,
         "priority": "low",
         "deadline": "2026-10-28",
-        "last_updated": "2026-05-13",
+        "last_updated": "2026-06-23",
         "relevance": "medium",
         "domains": [
             "deep tech",
@@ -1001,9 +891,10 @@
             "advanced technologies"
         ],
         "summary": "EIC Pathfinder Challenges 2026 are topic-gated calls for high-risk deep-tech research.",
-        "reality_check": "Track only if a published challenge directly matches UJF technologies; Pathfinder Open has already passed.",
+        "reality_check": "Track only if a published challenge directly matches a concrete UJF technology; do not bend basic physics into deep-tech framing.",
         "source_label": "EIC",
-        "source_url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-pathfinder_en"
+        "source_url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-pathfinder_en",
+        "action_note": "Monitor challenge fit, but do not push without a direct technology match."
     },
     {
         "id": "eurostars-call-11-2026",
