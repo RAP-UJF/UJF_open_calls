@@ -227,6 +227,43 @@ button {
   align-items: center;
 }
 
+.priority-dates {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.priority-dates h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.priority-dates dl {
+  margin: 0;
+}
+
+.priority-dates dl > div {
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.priority-dates dt,
+.priority-dates dd span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.priority-dates dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.priority-dates dd span {
+  display: block;
+  font-weight: 400;
+}
+
 .hero-visual-frame {
   width: 100%;
   max-height: 320px;
@@ -432,6 +469,7 @@ button {
 
 .card-top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
   align-items: start;
