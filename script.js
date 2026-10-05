@@ -645,7 +645,7 @@ function getDerivedStatus(deadline) {
   }
 
   const today = startOfDay(new Date());
-  const dayDelta = Math.ceil((deadlineDate.getTime() - today.getTime()) / 86400000);
+  const dayDelta = calendarDayDifference(deadlineDate, today);
 
   if (dayDelta < 0) {
     return "expired";
@@ -778,6 +778,13 @@ function startOfDay(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
+function calendarDayDifference(later, earlier) {
+  // Compare calendar dates without local daylight-saving offsets.
+  const laterUtc = Date.UTC(later.getFullYear(), later.getMonth(), later.getDate());
+  const earlierUtc = Date.UTC(earlier.getFullYear(), earlier.getMonth(), earlier.getDate());
+  return (laterUtc - earlierUtc) / 86400000;
+}
+
 function applyFiltersToDom() {
   if (!callsContainer) {
     return 0;
@@ -867,7 +874,7 @@ function matchesDeadlineFilter(deadline, filter) {
   }
 
   const today = startOfDay(new Date());
-  const dayDelta = Math.ceil((deadlineDate.getTime() - today.getTime()) / 86400000);
+  const dayDelta = calendarDayDifference(deadlineDate, today);
 
   if (filter === "past") {
     return dayDelta < 0;
