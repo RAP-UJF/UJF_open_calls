@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UJF Open Calls — Updates</title>
+    <link>https://rap-ujf.github.io/UJF_open_calls/</link>
+    <description>Important updates to research funding opportunities curated for the Nuclear Physics Institute of the Czech Academy of Sciences.</description>
+    <language>en</language>
+    <lastBuildDate>Mon, 26 Oct 2026 11:36:26 GMT</lastBuildDate>
+    <atom:link href="https://rap-ujf.github.io/UJF_open_calls/feed.xml" rel="self" type="application/rss+xml" />
+    <ttl>60</ttl>
+    <item>
+      <title>RSS updates are now available for UJF Open Calls</title>
+      <link>https://rap-ujf.github.io/UJF_open_calls/</link>
+      <description><![CDATA[
+        <p>You can now subscribe to UJF Open Calls in your RSS reader.</p>
+        <ul>
+          <li>Future announcements will summarize newly added calls, important deadline or eligibility changes, and significant corrections.</li>
+          <li>Each announcement will link to the Open Calls overview for current details and official sources.</li>
+        </ul>
+        <p><a href="https://rap-ujf.github.io/UJF_open_calls/">View the current Open Calls overview</a>.</p>
+      ]]></description>
+      <pubDate>Mon, 26 Oct 2026 11:36:26 GMT</pubDate>
+      <guid isPermaLink="false">urn:uuid:b31e1ca5-5a54-4914-8f28-330c43d98b3b</guid>
+    </item>
+  </channel>
+</rss>

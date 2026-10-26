@@ -142,6 +142,49 @@ button {
   line-height: 1.45;
 }
 
+.update-subscription {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.rss-link {
+  color: var(--accent-deep);
+  font-weight: 700;
+  text-underline-offset: 0.18em;
+}
+
+.rss-help {
+  margin-top: 0.35rem;
+}
+
+.rss-help summary {
+  width: fit-content;
+  max-width: 100%;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.rss-help p {
+  margin: 0.55rem 0;
+  color: var(--muted);
+}
+
+.rss-url {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--accent-deep);
+  text-underline-offset: 0.18em;
+}
+
+.rss-link:focus-visible,
+.rss-help summary:focus-visible,
+.rss-url:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 .portfolio-dashboard {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
